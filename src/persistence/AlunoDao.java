@@ -7,19 +7,12 @@ import beans.Aluno;
 
 public class AlunoDao {
 
-	private Connection conexao;
-
-//	public AlunoDao() {
-//		this.conexao = new ConnectionFactory().getConnection();
-//
-//	}
-
 	public void inserir(Aluno aluno) {
-
+		Connection conexao = null;
 		String sql = "insert into aluno" + "(cpf, nome, email)" + "values (?, ?, ?)";
 
 		try {
-
+			conexao = Conexao.getConnection();
 			PreparedStatement pstmt = conexao.prepareStatement(sql);
 
 			pstmt.setString(1, aluno.getCpf());
@@ -30,7 +23,15 @@ public class AlunoDao {
 			pstmt.close();
 
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new RuntimeException(e);
+		} finally {
+			try {
+				if (conexao != null)
+					conexao.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 
 	}
