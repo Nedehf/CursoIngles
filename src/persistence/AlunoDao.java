@@ -2,6 +2,7 @@ package persistence;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import beans.Aluno;
 
@@ -97,7 +98,44 @@ public class AlunoDao {
 	public void mostrar() {
 		
 		
+		
+		
+		
 
+	}
+	
+	public Aluno buscarAluno(String cpf){
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from aluno where cpf = ?";
+		Aluno aluno = null;
+		try{
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				String cpfAluno = rs.getString("cpf");
+				String nome = rs.getString("nome");
+				String email = rs.getString("email");
+				
+				aluno = new Aluno();
+				
+				aluno.setCpf(cpfAluno);
+				aluno.setNome(nome);
+				aluno.setEmail(email);
+				
+			}
+			
+			rs.close();
+			pstmt.close();
+			return aluno;
+		}catch (SQLException e){
+			throw new RuntimeException(e);
+		}
+		
+		
+		
+		
 	}
 
 }
