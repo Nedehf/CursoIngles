@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import beans.Aluno;
 
 public class AlunoDao {
@@ -95,12 +98,37 @@ public class AlunoDao {
 
 	}
 
-	public void mostrar() {
+	public List<Aluno> mostrar() {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from aluno";
 		
-		
-		
-		
-		
+		try{
+			
+			List<Aluno> alunos = new ArrayList<Aluno>();
+			Aluno aluno = null;
+			ResultSet rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				String cpf = rs.getString("cpf");
+				String nome = rs.getString("nome");
+				String email = rs.getString("email");
+				
+				aluno = new Aluno();
+				
+				aluno.setCpf(cpf);
+				aluno.setNome(nome);
+				aluno.setEmail(email);
+				
+				alunos.add(aluno);
+			}
+			
+			rs.close();
+			pstmt.close();
+			return alunos;
+		} catch (SQLException e){
+			throw new RuntimeException(e);
+		}
 
 	}
 	
