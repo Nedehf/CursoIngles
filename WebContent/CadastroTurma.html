@@ -3,103 +3,181 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <title>Cadastro de Turma</title>
 </head>
 
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-h3 {color: white; }
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
 
-.w3-row-padding img {margin-bottom: 12px}
+h3 {
+	color: white;
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
 
 /* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
 
 /* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
+#main {
+	margin-left: 120px
+}
 
 /* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
 
 .bgimg {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-image: url('Resources\\BG_01.jpg');
-    min-height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url('Resources\\BG_01.jpg');
+	min-height: 100%;
 }
 </style>
 
 <body class="w3-black">
 
-<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width:30%">
-  <div class="bgimg"></div>
-</nav>
+	<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width: 30%">
+		<div class="bgimg"></div>
+	</nav>
 
-<!-- Page Content -->
-<div class="w3-main w3-padding-large" style="margin-left:29%">
+	<!-- Page Content -->
+	<div class="w3-main w3-padding-large" style="margin-left: 29%">
 
-	<div class="w3-padding-64 w3-content w3-text-grey" id="cadastro" style="margin-bottom:64px">
-    <h2 class="w3-text-light-grey">Cadastro</h2>
-    <hr style="width:200px" class="w3-opacity">
-    
-    <p>Preencha os campos abaixo:</p>
+		<div class="w3-padding-64 w3-content w3-text-grey" id="cadastro"
+			style="margin-bottom: 64px">
+			<h2 class="w3-text-light-grey">Cadastro</h2>
+			<hr style="width: 200px" class="w3-opacity">
 
-    <form action="CadastrarTurma" method="post">
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Código da Turma" required name="codigo"></p>
-      
-      <h3>Nível</h3>
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Básico 1">Básico 1
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Básico 2">Básico 2
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Intermediário 1">Intermediário 1
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Intermediário 2">Intermediário 2
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Avançado 1">Avançado 1
-	      <input class="w3-input w3-padding-16 w3-border" type="radio" required name="nivel" value="Avançado 2">Avançado 2
-	      
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Professor" required name="professor"></p>
-      
-      <p><select class="w3-input w3-padding-16 w3-border" required name="horario">
-      
-      <option class="w3-input w3-padding-16 w3-border" value="24ABM">Seg/Qua  7h30 - 9h10 (24 AB M)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="24CDM">Seg/Qua  9h30 - 11h10 (24 CD M)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="24EFM">Seg/Qua  11h20 - 13h (24 EF M)</option>
-      
-      <option class="w3-input w3-padding-16 w3-border" value="24ABT">Seg/Qua  13h30 - 15h10 (24 AB T)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="24CDT">Seg/Qua  15h30 - 17h10 (24 CD T)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="24EFT">Seg/Qua  17h20 - 19h (24 EF T)</option>
-      
-      <option class="w3-input w3-padding-16 w3-border" value="24ABN">Seg/Qua  19h - 20h40 (24 AB N)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="24CDN">Seg/Qua  21h - 22h40 (24 CD N)</option>
-      
-      <option class="w3-input w3-padding-16 w3-border" value="35ABM">Ter/Qui   7h30 - 9h10 (35 AB M)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="35CDM">Ter/Qui   9h30 - 11h10 (35 CD M)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="35EFM">Ter/Qui   11h20 - 13h (35 EF M)</option>
-      
-      <option class="w3-input w3-padding-16 w3-border" value="35ABT">Ter/Qui   13h30 - 15h10 (35 AB T)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="35CDT">Ter/Qui   15h30 - 17h10 (35 CD T)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="35EFT">Ter/Qui   17h20 - 19h (35 EF T)</option>
-      
-      <option class="w3-input w3-padding-16 w3-border" value="35ABN">Ter/Qui   19h - 20h40 (35 AB N)</option>
-      <option class="w3-input w3-padding-16 w3-border" value="35CDN">Ter/Qui   21h - 22h40 (35 CD N)</option>
-      
-      </select> </p>
-      
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Número da Sala" required name="sala"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Quantidade máxima de alunos" required name="Message"></p>
-      <p><input class="w3-input w3-padding-16 w3-border" type="hidden" name="status" value=ATIVA></p>
-      <p>
-        <button class="w3-button w3-padding-large" type="submit">
-          <i class="fa fa-paper-plane"></i> Cadastrar
-        </button>
-      </p>
-    </form>
-    </div>
+			<p>Preencha os campos abaixo:</p>
 
-<!-- END PAGE CONTENT -->
-</div>
+			<form action="CadastrarTurma" method="post">
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Código da Turma" required name="codigo">
+				</p>
+
+				<table>
+
+					<tr>
+						<th><h3>Nível</h3></th>
+					</tr>
+
+					<tr>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Básico 1">Básico
+							1</td>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Básico 2">Básico
+							2</td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Intermediário 1">Intermediário
+							1</td>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Intermediário 2">Intermediário
+							2</td>
+					</tr>
+					<tr>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Avançado 1">Avançado
+							1</td>
+						<td><input class="w3-input w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Avançado 2">Avançado
+							2</td>
+					</tr>
+
+				</table>
+
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Professor" required name="professor">
+				</p>
+
+				<p>
+					<select class="w3-input w3-padding-16 w3-border" required
+						name="horario">
+
+						<option class="w3-input w3-padding-16 w3-border" value="24ABM">Seg/Qua
+							7h30 - 9h10 (24 AB M)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="24CDM">Seg/Qua
+							9h30 - 11h10 (24 CD M)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="24EFM">Seg/Qua
+							11h20 - 13h (24 EF M)</option>
+
+						<option class="w3-input w3-padding-16 w3-border" value="24ABT">Seg/Qua
+							13h30 - 15h10 (24 AB T)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="24CDT">Seg/Qua
+							15h30 - 17h10 (24 CD T)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="24EFT">Seg/Qua
+							17h20 - 19h (24 EF T)</option>
+
+						<option class="w3-input w3-padding-16 w3-border" value="24ABN">Seg/Qua
+							19h - 20h40 (24 AB N)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="24CDN">Seg/Qua
+							21h - 22h40 (24 CD N)</option>
+
+						<option class="w3-input w3-padding-16 w3-border" value="35ABM">Ter/Qui
+							7h30 - 9h10 (35 AB M)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="35CDM">Ter/Qui
+							9h30 - 11h10 (35 CD M)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="35EFM">Ter/Qui
+							11h20 - 13h (35 EF M)</option>
+
+						<option class="w3-input w3-padding-16 w3-border" value="35ABT">Ter/Qui
+							13h30 - 15h10 (35 AB T)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="35CDT">Ter/Qui
+							15h30 - 17h10 (35 CD T)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="35EFT">Ter/Qui
+							17h20 - 19h (35 EF T)</option>
+
+						<option class="w3-input w3-padding-16 w3-border" value="35ABN">Ter/Qui
+							19h - 20h40 (35 AB N)</option>
+						<option class="w3-input w3-padding-16 w3-border" value="35CDN">Ter/Qui
+							21h - 22h40 (35 CD N)</option>
+
+					</select>
+				</p>
+
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Número da Sala" required name="sala">
+				</p>
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="text"
+						placeholder="Quantidade máxima de alunos" required name="Message">
+				</p>
+				<p>
+					<input class="w3-input w3-padding-16 w3-border" type="hidden"
+						name="status" value=ATIVA>
+				</p>
+				<p>
+					<button class="w3-button w3-padding-large" type="submit">
+						<i class="fa fa-paper-plane"></i> Cadastrar
+					</button>
+				</p>
+			</form>
+		</div>
+
+		<!-- END PAGE CONTENT -->
+	</div>
 
 
 </body>
