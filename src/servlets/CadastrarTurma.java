@@ -1,8 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +19,7 @@ public class CadastrarTurma extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
 		String cod = request.getParameter("codigo");
 		String lvl = request.getParameter("nivel");
 		String prof = request.getParameter("professor");
@@ -30,25 +27,23 @@ public class CadastrarTurma extends HttpServlet {
 		String sala = request.getParameter("sala");
 		int qtde = Integer.parseInt(request.getParameter("quantidade"));
 		String sts = request.getParameter("status");
-		
-		Turma turma = new Turma(cod,lvl,prof,hr,sala,qtde,sts);
+
+		Turma turma = new Turma(cod, lvl, prof, hr, sala, qtde, sts);
 		TurmaDao tdao = new TurmaDao();
-		
+
 		tdao.inserir(turma);
-		
-		
-//		PrintWriter out = response.getWriter();
-//		out.println("<html><body>");
-//		out.println("Codigo: "+cod+"<br/>");
-//		out.println("Nivel: "+lvl+"<br/>");
-//		out.println("Professor: "+prof+"<br/>");
-//		out.println("Horario: "+hr+"<br/>");
-//		out.println("Sala: "+sala+"<br/>");
-//		out.println("Quantidade Maxima: "+qtde+"<br/>");
-//		out.println("Status: "+sts+"<br/>");
-//		out.println("</body></html>");
-//		out.close();
-		
+
+		// PrintWriter out = response.getWriter();
+		// out.println("<html><body>");
+		// out.println("Codigo: "+cod+"<br/>");
+		// out.println("Nivel: "+lvl+"<br/>");
+		// out.println("Professor: "+prof+"<br/>");
+		// out.println("Horario: "+hr+"<br/>");
+		// out.println("Sala: "+sala+"<br/>");
+		// out.println("Quantidade Maxima: "+qtde+"<br/>");
+		// out.println("Status: "+sts+"<br/>");
+		// out.println("</body></html>");
+		// out.close();
 
 	}
 
