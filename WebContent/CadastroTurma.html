@@ -20,6 +20,10 @@ h3 {
 	color: white;
 }
 
+input[type="radio"] {
+	margin: 0 10px 0 10px;
+}
+
 .w3-row-padding img {
 	margin-bottom: 12px
 }
@@ -65,56 +69,30 @@ h3 {
 			<h2 class="w3-text-light-grey">Cadastro</h2>
 			<hr style="width: 200px" class="w3-opacity">
 
+			<!-- Campos -->
 			<p>Preencha os campos abaixo:</p>
 
 			<form action="CadastrarTurma" method="post">
+
+				<!-- Codigo da Turma -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
 						placeholder="Código da Turma" required name="codigo">
 				</p>
 
-				<table>
-
-					<tr>
-						<th><h3>Nível</h3></th>
-					</tr>
-
-					<tr>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Básico 1">Básico
-							1</td>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Básico 2">Básico
-							2</td>
-					</tr>
-					<tr>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Intermediário 1">Intermediário
-							1</td>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Intermediário 2">Intermediário
-							2</td>
-					</tr>
-					<tr>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Avançado 1">Avançado
-							1</td>
-						<td><input class="w3-input w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Avançado 2">Avançado
-							2</td>
-					</tr>
-
-				</table>
-
+				<!-- Professor -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
 						placeholder="Professor" required name="professor">
 				</p>
 
+				<!-- Horario (ComboBox) -->
 				<p>
 					<select class="w3-input w3-padding-16 w3-border" required
 						name="horario">
 
+						<option class="w3-input w3-padding-16 w3-border" value="" disabled
+							selected>Horário</option>
 						<option class="w3-input w3-padding-16 w3-border" value="24ABM">Seg/Qua
 							7h30 - 9h10 (24 AB M)</option>
 						<option class="w3-input w3-padding-16 w3-border" value="24CDM">Seg/Qua
@@ -156,18 +134,54 @@ h3 {
 					</select>
 				</p>
 
+				<!-- Numero da Sala -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
 						placeholder="Número da Sala" required name="sala">
 				</p>
+
+				<!-- Qtde de Alunos -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Quantidade máxima de alunos" required name="Message">
+						placeholder="Quantidade máxima de alunos" required name="quantidade">
 				</p>
+
+				<!-- Nível -->
+				<input class="w3-input w3-padding-16 w3-border" type="text"
+					placeholder="Nível" disabled required name="lvl">
+
+				<table>
+					<tr>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Básico 1">Básico
+							1</td>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Básico 2">Básico
+							2</td>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Intermediário 1">Intermediário
+							1</td>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Intermediário 2">Intermediário
+							2</td>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Avançado 1">Avançado
+							1</td>
+						<td><input class="w3-radio w3-padding-16 w3-border"
+							type="radio" required name="nivel" value="Avançado 2">Avançado
+							2</td>
+					</tr>
+
+				</table>
+				<br>
+		
+				<!-- Status -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="hidden"
 						name="status" value=ATIVA>
 				</p>
+				
+				<!-- Submit -->
 				<p>
 					<button class="w3-button w3-padding-large" type="submit">
 						<i class="fa fa-paper-plane"></i> Cadastrar
