@@ -59,7 +59,14 @@ public void alterar(){
 
 public void mostrar(){
 	
+//	mostrar uma turma
+	
 }
 
+public void listar(){
+	
+//	mostrar todas as turmas
+	
+}
 
 }

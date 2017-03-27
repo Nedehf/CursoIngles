@@ -25,7 +25,7 @@ public class ListarTurmas extends HttpServlet {
 			throws ServletException, IOException {
 
 		TurmaDao dao = new TurmaDao();
-		List<Turma> turmas = dao.mostrar();
+		List<Turma> turmas = dao.listar();
 
 		PrintWriter out = response.getWriter();
 
@@ -83,7 +83,7 @@ public class ListarTurmas extends HttpServlet {
 						"<td>"+t.getStatus()+"</td>" +
 						"<td><a href='Delete'> <img src='Resources\\Bin_01.png'alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
 						"</a></td>"+
-						"<td><a href='EditarTurma.html'> <img src='Resources\\Edit_01.png'alt='Edit.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href='EditarTurma'> <img src='Resources\\Edit_01.png'alt='Edit.ico' style='width: 18px; height: 18px; border: 0;'>" + 
 						"</a></td>" + "</tr>");
 			} else {
 

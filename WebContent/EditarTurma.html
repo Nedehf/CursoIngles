@@ -2,14 +2,14 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Edição</title>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<title>Cadastro de Turma</title>
+<title>Alteração de Turma</title>
 </head>
 
 <style>
@@ -67,30 +67,30 @@ input[type="radio"] {
 
 		<div class="w3-padding-64 w3-content w3-text-grey" id="cadastro"
 			style="margin-bottom: 64px">
-			<h2 class="w3-text-light-grey">Cadastro</h2>
+			<h2 class="w3-text-light-grey">Alteração de Turma</h2>
 			<hr style="width: 200px" class="w3-opacity">
 
 			<!-- Campos -->
-			<p>Preencha os campos abaixo:</p>
+			<p>Altere o campo a ser modificado abaixo:</p>
 
-			<form action="CadastrarTurma" method="post">
+			<form action="AtualizarTurma" method="post">
 
 				<!-- Codigo da Turma -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Código da Turma" required name="codigo">
+						placeholder="Código da Turma" required name="codigo" value="AAA">
 				</p>
 
 				<!-- Professor -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Professor" required name="professor">
+						placeholder="Professor" required name="professor" value="AAA">
 				</p>
 
 				<!-- Horario (ComboBox) -->
 				<p>
 					<select class="w3-input w3-padding-16 w3-border" required
-						name="horario">
+						name="horario" >
 
 						<option class="w3-input w3-padding-16 w3-border" value="" disabled
 							selected>Horário</option>
@@ -113,7 +113,7 @@ input[type="radio"] {
 						<option class="w3-input w3-padding-16 w3-border" value="24CDN">Seg/Qua
 							21h - 22h40 (24 CD N)</option>
 
-						<option class="w3-input w3-padding-16 w3-border" value="35ABM">Ter/Qui
+						<option class="w3-input w3-padding-16 w3-border" value="35ABM" selected>Ter/Qui
 							7h30 - 9h10 (35 AB M)</option>
 						<option class="w3-input w3-padding-16 w3-border" value="35CDM">Ter/Qui
 							9h30 - 11h10 (35 CD M)</option>
@@ -138,14 +138,14 @@ input[type="radio"] {
 				<!-- Numero da Sala -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
-						placeholder="Número da Sala" required name="sala">
+						placeholder="Número da Sala" required name="sala" value="AAA">
 				</p>
 
 				<!-- Qtde de Alunos -->
 				<p>
 					<input class="w3-input w3-padding-16 w3-border" type="text"
 						placeholder="Quantidade máxima de alunos" required
-						name="quantidade">
+						name="quantidade" value="AAA">
 				</p>
 
 				<!-- Nível -->
@@ -158,7 +158,7 @@ input[type="radio"] {
 							type="radio" required name="nivel" value="Básico 1">Básico
 							1</td>
 						<td><input class="w3-radio w3-padding-16 w3-border"
-							type="radio" required name="nivel" value="Básico 2">Básico
+							type="radio" required name="nivel" value="Básico 2" checked>Básico
 							2</td>
 						<td><input class="w3-radio w3-padding-16 w3-border"
 							type="radio" required name="nivel" value="Intermediário 1">Intermediário
@@ -184,7 +184,7 @@ input[type="radio"] {
 					placeholder="Status" disabled required name="sts">
 					
 					<input class="w3-radio w3-padding-16 w3-border" type="radio"
-						required name="status" value="ATIVA"> Ativa 
+						required name="status" value="ATIVA" checked> Ativa 
 						
 					<input class="w3-radio w3-padding-16 w3-border" type="radio" required
 						name="status" value="INATIVA"> Inativa
@@ -193,7 +193,7 @@ input[type="radio"] {
 				<!-- Submit -->
 				<p>
 					<button class="w3-button w3-padding-large" type="submit">
-						<i class="fa fa-paper-plane"></i> Cadastrar
+						<i class="fa fa-paper-plane"></i> Atualizar
 					</button>
 				</p>
 			</form>
