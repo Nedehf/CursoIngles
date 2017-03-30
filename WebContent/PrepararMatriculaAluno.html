@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<title>Matricula</title>
+</head>
+
+<style>
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: "Montserrat", sans-serif
+}
+
+.w3-row-padding img {
+	margin-bottom: 12px
+}
+
+/* Set the width of the sidebar to 120px */
+.w3-sidebar {
+	width: 120px;
+	background: #222;
+}
+
+/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+#main {
+	margin-left: 120px
+}
+
+/* Remove margins from "page content" on small screens */
+@media only screen and (max-width: 600px) {
+	#main {
+		margin-left: 0
+	}
+}
+
+.bgimg {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url('Resources\\BG_01.jpg');
+	min-height: 100%;
+}
+</style>
+
+<body class="w3-black">
+
+	<nav class="w3-sidebar w3-hide-medium w3-hide-small" style="width: 30%">
+		<div class="bgimg"></div>
+	</nav>
+
+	<!-- Page Content -->
+	<div class="w3-main w3-padding-large" style="margin-left: 29%">
+
+		<div class="w3-padding-64 w3-content w3-text-grey" id="matricula"
+			style="margin-bottom: 64px">
+			<h2 class="w3-text-light-grey">Matricula</h2>
+			<hr style="width: 200px" class="w3-opacity">
+
+
+			<!-- Campos -->
+			<p>Preencha os campos abaixo:</p>
+
+			<form action="MatricularAluno" method="post">
+
+				<!-- Alunos (ComboBox) -->
+				<p>
+					<select class="w3-select w3-padding-16 w3-border" required name="Aluno">
+						<option value="" disabled selected>Aluno</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select>
+				</p>
+
+				<!-- Turmas (ComboBox) -->
+				<p>
+					<select class="w3-select w3-padding-16 w3-border" required name="Turma">
+						<option value="" disabled selected>Turma</option>
+						<option value="1">Option 1</option>
+						<option value="2">Option 2</option>
+						<option value="3">Option 3</option>
+					</select>
+				</p>
+
+				<!-- Submit -->
+				<p>
+					<button class="w3-button w3-padding-large" type="submit">
+						<i class="fa fa-paper-plane"></i> Matricular
+					</button>
+				</p>
+			</form>
+
+		</div>
+	</div>
+
+
+</body>
+</html>

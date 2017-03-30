@@ -96,7 +96,7 @@ public class ListarTurmas extends HttpServlet {
 						"<td>"+t.getSala()+"</td>" + 
 						"<td>"+t.getQtde_maxima()+"</td>" + 
 						"<td>"+t.getStatus()+"</td>" +
-						"<td><a href='Delete'> <img src='Resources\\Bin_01.png' alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href='DeletarTurma?codturma="+t.getCodigo()+"' onclick='return confirm('Deseja Deletar Registro?')'> <img src='Resources\\Bin_01.png' alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
 						"</a></td>" +
 						"<td><img src='Resources\\Edit_01.png' alt='Edit.ico' class='w3-opacity-max' style='width: 18px; height: 18px; border: 0;'>"
 						+ "</td>" + "</tr>");
