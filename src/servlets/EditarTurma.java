@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Turma;
+import persistence.TurmaDao;
+
 @WebServlet("/EditarTurma")
 public class EditarTurma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,13 +34,10 @@ public class EditarTurma extends HttpServlet {
 				"Ter/Qui 13h30 - 15h10 (35 AB T)", "Ter/Qui 15h30 - 17h10 (35 CD T)", "Ter/Qui 17h20 - 19h (35 EF T)",
 				"Ter/Qui 19h - 20h40 (35 AB N)", "Ter/Qui 21h - 22h40 (35 CD N)" };
 
-		String cod = request.getParameter("codigo");
-		String lvl = request.getParameter("nivel");
-		String prof = request.getParameter("professor");
-		String hr = request.getParameter("horario");
-		String sala = request.getParameter("sala");
-		int qtde = Integer.parseInt(request.getParameter("quantidade"));
-//		String sts = request.getParameter("status");
+		String codturma = request.getParameter("codturma");
+		TurmaDao dao = new TurmaDao();
+		Turma t = dao.buscar(codturma);
+
 
 		PrintWriter out = response.getWriter();
 
@@ -86,12 +86,12 @@ public class EditarTurma extends HttpServlet {
 
 		out.println("<!-- Codigo da Turma -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Código da Turma' required name='codigo' value='" + cod + "'>"
+				+ "					placeholder='Código da Turma' required name='codigo' value='" + t.getCodigo() + "'>"
 				+ "			</p>");
 
 		out.println("<!-- Professor -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Professor' required name='professor' value='" + prof + "'>"
+				+ "					placeholder='Professor' required name='professor' value='" + t.getProfessor() + "'>"
 				+ "			</p>");
 
 		out.println("<!-- Horario (ComboBox) -->" + "<p>"
@@ -102,7 +102,7 @@ public class EditarTurma extends HttpServlet {
 
 		for (int j = 0; j <= horarios.length; j++) {
 
-			if (hr.equals(horarios[j]))
+			if (t.getHorario().equals(horarios[j]))
 				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "' selected>"
 						+ hrInfo[j] + "</option>");
 			else
@@ -116,12 +116,12 @@ public class EditarTurma extends HttpServlet {
 
 		out.println("<!-- Numero da Sala -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Número da Sala' required name='sala' value='" + sala + "'>"
+				+ "					placeholder='Número da Sala' required name='sala' value='" + t.getSala() + "'>"
 				+ "			</p>");
 
 		out.println("<!-- Qtde de Alunos -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Quantidade máxima de alunos' required name='quantidade' value='" + qtde
+				+ "					placeholder='Quantidade máxima de alunos' required name='quantidade' value='" + t.getQtde_maxima()
 				+ "'>" + "			</p>");
 
 		out.println("<!-- Nível -->" + "			<p>"
@@ -133,7 +133,7 @@ public class EditarTurma extends HttpServlet {
 
 		for (String Nivs : lvls) {
 
-			if (lvl.equals(Nivs))
+			if (t.getNivel().equals(Nivs))
 				out.println(
 						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
 								+ Nivs + "' checked>" + Nivs + "</td>");
