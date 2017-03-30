@@ -25,7 +25,7 @@ public class ListarTurmas extends HttpServlet {
 			throws ServletException, IOException {
 
 		TurmaDao dao = new TurmaDao();
-		List<Turma> turmas = dao.listar();
+		List<Turma> turmas = dao.mostrar();
 
 		PrintWriter out = response.getWriter();
 

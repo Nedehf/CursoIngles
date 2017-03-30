@@ -37,7 +37,7 @@ public class AtualizarTurma extends HttpServlet {
 		Turma turma = new Turma(cod, lvl, prof, hr, sala, qtde, sts);
 		TurmaDao tdao = new TurmaDao();
 
-		tdao.alterar(turma);
+		tdao.alterar(cod,turma);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");
 		rd.forward(request, response);
