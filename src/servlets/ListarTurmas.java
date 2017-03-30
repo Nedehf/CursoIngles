@@ -3,23 +3,23 @@ package servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import beans.Turma;
 import persistence.TurmaDao;
 
 @WebServlet("/ListarTurmas")
 public class ListarTurmas extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public ListarTurmas() {
-        super();
-    }
-
+	public ListarTurmas() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -81,9 +81,9 @@ public class ListarTurmas extends HttpServlet {
 						"<td>"+t.getSala()+"</td>" + 
 						"<td>"+t.getQtde_maxima()+"</td>" + 
 						"<td>"+t.getStatus()+"</td>" +
-						"<td><a href='Delete'> <img src='Resources\\Bin_01.png'alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href='DeletarTurma?codturma="+t.getCodigo()+"' onclick='return confirm('Deseja Deletar Registro?')'> <img src='Resources\\Bin_01.png'alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
 						"</a></td>"+
-						"<td><a href='EditarTurma'> <img src='Resources\\Edit_01.png'alt='Edit.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href='EditarTurma?codturma="+t.getCodigo()+"'> <img src='Resources\\Edit_01.png'alt='Edit.ico' style='width: 18px; height: 18px; border: 0;'>" + 
 						"</a></td>" + "</tr>");
 			} else {
 
@@ -114,8 +114,8 @@ public class ListarTurmas extends HttpServlet {
 
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
