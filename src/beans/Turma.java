@@ -2,13 +2,13 @@ package beans;
 
 public class Turma {
 
-	String codigo;
-	String nivel;
-	String professor;
-	String horario;
-	String sala;
-	int qtde_maxima;
-	String status;
+	private String codigo;
+	private String nivel;
+	private String professor;
+	private String horario;
+	private String sala;
+	private int qtde_maxima;
+	private String status;
 
 	public Turma() {
 		super();

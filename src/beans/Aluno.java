@@ -2,9 +2,9 @@ package beans;
 
 public class Aluno {
 
-	String cpf;
-	String nome;
-	String email;
+	private String cpf;
+	private String nome;
+	private String email;
 	
 	
 

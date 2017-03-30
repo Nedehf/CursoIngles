@@ -5,10 +5,52 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import beans.Aluno;
 import beans.Turma;
 
 public class TurmaDao {
+	
+	public Turma buscar(String codigo) {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from turma where aluno_cpf = ? and turma_codigo = ?";
+		Turma turma = null;
+		try {
+
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String codigoTurma = rs.getString("codigo");
+				String nivel = rs.getString("nivel");
+				String professor = rs.getString("professor");
+				String horario = rs.getString("horario");
+				String sala = rs.getString("sala");
+				int qtde_maxima = rs.getInt("qtde_maxima");
+				String status = rs.getString("status");
+
+				turma = new Turma();
+
+				turma.setNivel(nivel);
+				turma.setProfessor(professor);
+				turma.setHorario(horario);
+				turma.setSala(sala);
+				turma.setQtde_maxima(qtde_maxima);
+				turma.setStatus(status);
+				
+
+			}
+
+			rs.close();
+			pstmt.close();
+			return turma;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 
 	public void inserir(Turma turma) {
 
