@@ -4,28 +4,36 @@ import java.util.Date;
 
 public class Matricula {
 
-	Date ts = new Date();
+	private Date data_matricula = new Date();
+	
+	private String aluno_cpf;
+	private String turma_codigo;
 	double nota;
 	double frequencia;
-
-	public Matricula() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	
+	public Date getData_matricula() {
+		return data_matricula;
 	}
 
-	public Matricula(Date ts, double nota, double frequencia) {
-		super();
-		this.ts = ts;
-		this.nota = nota;
-		this.frequencia = frequencia;
+	public void setData_matricula(Date data_matricula) {
+		this.data_matricula = data_matricula;
 	}
 
-	public Date getTs() {
-		return ts;
+	public String getAluno_cpf() {
+		return aluno_cpf;
 	}
 
-	public void setTs(Date ts) {
-		this.ts = ts;
+	public void setAluno_cpf(String aluno_cpf) {
+		this.aluno_cpf = aluno_cpf;
+	}
+
+	public String getTurma_codigo() {
+		return turma_codigo;
+	}
+
+	public void setTurma_codigo(String turma_codigo) {
+		this.turma_codigo = turma_codigo;
 	}
 
 	public double getNota() {
@@ -43,5 +51,23 @@ public class Matricula {
 	public void setFrequencia(double frequencia) {
 		this.frequencia = frequencia;
 	}
+
+	public Matricula() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Matricula(String aluno_cpf, String turma_codigo, Date data_matricula, double nota, double frequencia) {
+		super();
+		
+		this.aluno_cpf = aluno_cpf;
+		this.turma_codigo = turma_codigo;
+		this.data_matricula = data_matricula;
+		
+		this.nota = nota;
+		this.frequencia = frequencia;
+	}
+
+	
 
 }
