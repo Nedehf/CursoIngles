@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,14 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.Aluno;
 import beans.Turma;
 import persistence.TurmaDao;
 
-@WebServlet("/EditarTurma")
-public class EditarTurma extends HttpServlet {
+import beans.Aluno;
+import persistence.AlunoDao;
+
+@WebServlet("/MatricularAluno")
+public class MatricularAluno extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public EditarTurma() {
+	public MatricularAluno() {
 		super();
 
 	}
@@ -35,9 +40,12 @@ public class EditarTurma extends HttpServlet {
 				"Ter/Qui 19h - 20h40 (35 AB N)", "Ter/Qui 21h - 22h40 (35 CD N)" };
 
 		String codturma = request.getParameter("codturma");
-		TurmaDao dao = new TurmaDao();
-		Turma t = dao.buscar(codturma);
+		TurmaDao tdao = new TurmaDao();
+		List<Turma> turmas = tdao.mostrar();
 
+		AlunoDao adao = new AlunoDao();
+
+		List<Aluno> alunos = adao.mostrar();
 
 		PrintWriter out = response.getWriter();
 
@@ -46,7 +54,7 @@ public class EditarTurma extends HttpServlet {
 				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
 				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>" +
 
-				"<title>Alteração de Turma</title>" + "</head>");
+				"<title>Efetuar Matrícula</title>" + "</head>");
 
 		out.println("<style>" + "body, h1, h2, h3, h4, h5, h6 {" + "	font-family: 'Montserrat', sans-serif" + "}" +
 
@@ -77,89 +85,45 @@ public class EditarTurma extends HttpServlet {
 		out.println("<!-- Page Content -->" + "<div class='w3-main w3-padding-large' style='margin-left: 29%'>" +
 
 				"	<div class='w3-padding-64 w3-content w3-text-grey' id='cadastro'"
-				+ "		style='margin-bottom: 64px'>" + "		<h2 class='w3-text-light-grey'>Alteração de Turma</h2>"
+				+ "		style='margin-bottom: 64px'>" + "		<h2 class='w3-text-light-grey'>Efetuar Matrícula</h2>"
 				+ "		<hr style='width: 200px' class='w3-opacity'>" +
 
-				"		<!-- Campos -->" + "		<p>Altere o campo a ser modificado abaixo:</p>" +
+				"		<!-- Campos -->" + "		<p>Selecione o aluno e a turma a ser matriculado:</p>" +
 
-				"		<form action='AtualizarTurma' method='post'>");
+				"		<form action='MatriculaAluno' method='post'>");
 
-		out.println("<!-- Codigo da Turma -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Código da Turma' required name='codigo' value='" + t.getCodigo() + "'>"
-				+ "			</p>");
-
-		out.println("<!-- Professor -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Professor' required name='professor' value='" + t.getProfessor() + "'>"
-				+ "			</p>");
-
-		out.println("<!-- Horario (ComboBox) -->" + "<p>"
-				+ "	<select class='w3-input w3-padding-16 w3-border' required" + "		name='horario' >" +
+		out.println("<!-- Combobox de Aluno -->" + "			<p>"
+				+ "	<select class='w3-input w3-padding-16 w3-border' required" + "		name='cpfAluno' >" +
 
 				"		<option class='w3-input w3-padding-16 w3-border' value='' disabled"
-				+ "			selected>Horário</option>");
+				+ "			selected>Aluno</option>");
 
-		for (int j = 0; j <= horarios.length; j++) {
-
-			if (t.getHorario().equals(horarios[j]))
-				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "' selected>"
-						+ hrInfo[j] + "</option>");
-			else
-				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "'>" + hrInfo[j]
-						+ "</option>");
-
+		for (Aluno aluno : alunos) {
+			out.println("<option value='" + aluno.getCpf() + "'>" + aluno.getNome() + "</option>");
 		}
-
 		out.println("</select>");
+
 		out.println("</p>");
 
-		out.println("<!-- Numero da Sala -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Número da Sala' required name='sala' value='" + t.getSala() + "'>"
-				+ "			</p>");
+		out.println("<!-- Combobox de Turma -->" + "			<p>"
+				+ "	<select class='w3-input w3-padding-16 w3-border' required" + "		name='codigo' >" +
 
-		out.println("<!-- Qtde de Alunos -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Quantidade máxima de alunos' required name='quantidade' value='" + t.getQtde_maxima()
-				+ "'>" + "			</p>");
+				"		<option class='w3-input w3-padding-16 w3-border' value='' disabled"
+				+ "			selected>Turma</option>");
 
-		out.println("<!-- Nível -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Nível' disabled name='lvl'>" + "			</p>");
-
-		out.println("<table>");
-		out.println("<tr>");
-
-		for (String Nivs : lvls) {
-
-			if (t.getNivel().equals(Nivs))
-				out.println(
-						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-								+ Nivs + "' checked>" + Nivs + "</td>");
-			else
-				out.println(
-						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-								+ Nivs + "'>" + Nivs + "</td>");
+		for (Turma turma : turmas) {
+			out.println("<option value='" + turma.getCodigo() + "'>" + turma.getCodigo() + "</option>");
 		}
-		out.println("</tr>");
-		out.println("</table>");
-
-		out.println("<!-- Status -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Status' disabled name='sts'>");
-
-		out.println(
-				"<input class='w3-radio w3-padding-16 w3-border' type='radio' required name='status' value='ATIVA' checked> Ativa");
-
-		out.println(
-				"<input class='w3-radio w3-padding-16 w3-border' type='radio' required name='status' value='INATIVA'> Inativa ");
+		out.println("</select>");
 
 		out.println("</p>");
 
 		out.println("<!-- Submit -->" + "<p>" + "	<button class='w3-button w3-padding-large' type='submit'>"
-				+ "		<i class='fa fa-paper-plane'></i> Atualizar" + "	</button>" + "</p>");
+				+ "		<i class='fa fa-paper-plane'></i> Matricular" + "	</button>" + "</p>");
 		out.println("</form>");
+		out.println("<p>"+
+		"<a href='Index.html'>Voltar ao Início</a>"+
+		"</p>");
 		out.println("</div>");
 
 		out.println("<!-- END PAGE -->" + "</div>");

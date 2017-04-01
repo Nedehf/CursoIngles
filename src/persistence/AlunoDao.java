@@ -105,6 +105,9 @@ public class AlunoDao {
 
 		try {
 
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
 			List<Aluno> alunos = new ArrayList<Aluno>();
 			Aluno aluno = null;
 			ResultSet rs = pstmt.executeQuery();
