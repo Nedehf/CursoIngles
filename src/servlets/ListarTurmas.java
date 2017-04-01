@@ -29,12 +29,13 @@ public class ListarTurmas extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		out.println("<!DOCTYPE html>" + "<html>" + "<head>" + "meta charset='ISO-8859-1'>"
+		out.println("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset='ISO-8859-1'>"
 				+ "<title>Lista de Turmas</title>"
 				+ "<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + "<link rel='stylesheet'"
 				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
 				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"
-				+ "</head>");
+				+ "</head>"
+				);
 
 		// CSS
 		out.println("<style>" + 
@@ -107,6 +108,8 @@ public class ListarTurmas extends HttpServlet {
 
 		// Fim do Html
 		out.println("</table>");
+		
+		out.print("<a href='Index.html'>Voltar ao Início</a>");
 		out.println("</body>");
 		out.println("</html>");
 		

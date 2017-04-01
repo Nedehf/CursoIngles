@@ -151,10 +151,13 @@ public class TurmaDao {
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from turma";
+		String sql = "select * from curso_ingles.turma";
 
 		try {
 
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
 			List<Turma> turmas = new ArrayList<Turma>();
 			Turma turma = null;
 			ResultSet rs = pstmt.executeQuery();
