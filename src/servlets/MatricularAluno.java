@@ -29,17 +29,7 @@ public class MatricularAluno extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String[] lvls = { "Básico 1", "Básico 2", "Intermediário 1", "Intermediário 2", "Avançado 1", "Avançado 2" };
-		String[] horarios = { "24ABM", "24CDM", "24EFM", "24ABT", "24CDT", "24EFT", "24ABN", "24CDN", "35ABM", "35CDM",
-				"35EFM", "35ABT", "35CDT", "35EFT", "35ABN", "35CDN" };
-		String[] hrInfo = { "Seg/Qua 7h30 - 9h10 (24 AB M)", "Seg/Qua 9h30 - 11h10 (24 CD M)",
-				"Seg/Qua 11h20 - 13h (24 EF M)", "Seg/Qua 13h30 - 15h10 (24 AB T)", "Seg/Qua 15h30 - 17h10 (24 CD T)",
-				"Seg/Qua 17h20 - 19h (24 EF T)", "Seg/Qua 19h - 20h40 (24 AB N)", "Seg/Qua 21h - 22h40 (24 CD N)",
-				"Ter/Qui 7h30 - 9h10 (35 AB M)", "Ter/Qui 9h30 - 11h10 (35 CD M)", "Ter/Qui 11h20 - 13h (35 EF M)",
-				"Ter/Qui 13h30 - 15h10 (35 AB T)", "Ter/Qui 15h30 - 17h10 (35 CD T)", "Ter/Qui 17h20 - 19h (35 EF T)",
-				"Ter/Qui 19h - 20h40 (35 AB N)", "Ter/Qui 21h - 22h40 (35 CD N)" };
-
-		String codturma = request.getParameter("codturma");
+	
 		TurmaDao tdao = new TurmaDao();
 		List<Turma> turmas = tdao.mostrar();
 
@@ -49,7 +39,7 @@ public class MatricularAluno extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		out.println("<html>" + "<head>" + "<meta charset='ISO-8859-1'>" + "<title>Edição</title>"
+		out.println("<html>" + "<head>" + "<meta charset='ISO-8859-1'>" + "<title>Matricular Aluno</title>"
 				+ "<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + "<link rel='stylesheet'"
 				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
 				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>" +
