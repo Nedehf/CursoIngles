@@ -41,92 +41,100 @@ public class EditarTurma extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		out.println("<html>" + "<head>" + "<meta charset='ISO-8859-1'>" + "<title>Edição</title>"
-				+ "<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + "<link rel='stylesheet'"
-				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
-				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>" +
+		out.println("<html>");
+		
+		out.println("<head>");
+		
+		out.println("<meta charset='ISO-8859-1'>");		
+		out.println("<title>Alteração de Turma</title>");		
+		
+		out.println("<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + 
+					"<link rel='stylesheet'	href='https://fonts.googleapis.com/css?family=Montserrat'>" + 
+					"<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>");
+		
+		out.println("</head>");
 
-				"<title>Alteração de Turma</title>" + "</head>");
+		out.println("<style>");
+		
+		out.println("body, h1, h2, h3, h4, h5, h6 {	font-family: 'Montserrat', sans-serif" + "}" +
 
-		out.println("<style>" + "body, h1, h2, h3, h4, h5, h6 {" + "	font-family: 'Montserrat', sans-serif" + "}" +
+				"h3 { color: white; }" +
 
-				"h3 {" + "	color: white;" + "}" +
+				"input[type='radio'] { margin: 0 10px 0 10px; }" +
 
-				"input[type='radio'] {" + "	margin: 0 10px 0 10px;" + "}" +
+				".w3-row-padding img { 	margin-bottom: 12px }" +
 
-				".w3-row-padding img {" + "	margin-bottom: 12px" + "}" +
+				"/* Set the width of the sidebar to 120px */" + 
+				".w3-sidebar { width: 120px; background: #222; }" +
 
-				"/* Set the width of the sidebar to 120px */" + ".w3-sidebar {" + "	width: 120px;"
-				+ "	background: #222;" + "}" +
+				"/* Add a left margin to the 'page content' that matches the width of the sidebar (120px) */" +
+				"#main { margin-left: 120px }" +
 
-				"/* Add a left margin to the 'page content' that matches the width of the sidebar (120px) */"
-				+ "#main {" + "	margin-left: 120px" + "}" +
+				"/* Remove margins from 'page content' on small screens */" +
+				"@media only screen and (max-width: 600px) { #main { margin-left: 0	} }" +
 
-				"/* Remove margins from 'page content' on small screens */"
-				+ "@media only screen and (max-width: 600px) {" + "	#main {" + "		margin-left: 0" + "	}" + "}" +
+				".bgimg { background-position: center; background-repeat: no-repeat; background-size: cover; background-image: url('Resources\\BG_01.jpg');	min-height: 100%;" + "}");
+		
+		out.println("</style>");
 
-				".bgimg {" + "	background-position: center;" + "	background-repeat: no-repeat;"
-				+ "	background-size: cover;" + "	background-image: url('Resources\\BG_01.jpg');"
-				+ "	min-height: 100%;" + "}" + "</style>");
+		out.println("<body class='w3-black'>");
 
-		out.println("<body class='w3-black'>" +
+		out.println("<nav class='w3-sidebar w3-hide-medium w3-hide-small' style='width: 30%'>"+
+					"<div class='bgimg'></div>" + 
+					"</nav>");
 
-				"<nav class='w3-sidebar w3-hide-medium w3-hide-small' style='width: 30%'>"
-				+ "	<div class='bgimg'></div>" + "</nav>");
+		out.println("<!-- Page Content -->" + 
+				
+					"<div class='w3-main w3-padding-large' style='margin-left: 29%'>" +
+					"<div class='w3-padding-64 w3-content w3-text-grey' id='cadastro' style='margin-bottom: 64px'>" + 
+						"<h2 class='w3-text-light-grey'>Alteração de Turma</h2>" + 
+						"<hr style='width: 200px' class='w3-opacity'>");
 
-		out.println("<!-- Page Content -->" + "<div class='w3-main w3-padding-large' style='margin-left: 29%'>" +
+		out.println("<!-- Campos -->" + 
+						"<p>Altere o campo a ser modificado abaixo:</p>" +
 
-				"	<div class='w3-padding-64 w3-content w3-text-grey' id='cadastro'"
-				+ "		style='margin-bottom: 64px'>" + "		<h2 class='w3-text-light-grey'>Alteração de Turma</h2>"
-				+ "		<hr style='width: 200px' class='w3-opacity'>" +
+					"<form action='AtualizarTurma' method='post'>");
 
-				"		<!-- Campos -->" + "		<p>Altere o campo a ser modificado abaixo:</p>" +
+		out.println("<!-- Codigo da Turma -->" + 
+					"<p>" +
+					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Código da Turma' required name='codigo' value='"+ t.getCodigo() +"'>" +
+				 	"</p>");
 
-				"		<form action='AtualizarTurma' method='post'>");
+		out.println("<!-- Professor -->" + 
+					"<p>"
+				+ "	<input class='w3-input w3-padding-16 w3-border' type='text'	placeholder='Professor' required name='professor' value='" + t.getProfessor() + "'>"
+				+ "	</p>");
 
-		out.println("<!-- Codigo da Turma -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Código da Turma' required name='codigo' value='" + t.getCodigo() + "'>"
-				+ "			</p>");
-
-		out.println("<!-- Professor -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Professor' required name='professor' value='" + t.getProfessor() + "'>"
-				+ "			</p>");
-
-		out.println("<!-- Horario (ComboBox) -->" + "<p>"
-				+ "	<select class='w3-input w3-padding-16 w3-border' required" + "		name='horario' >" +
-
-				"		<option class='w3-input w3-padding-16 w3-border' value='' disabled"
-				+ "			selected>Horário</option>");
+		out.println("<!-- Horario (ComboBox) -->" + 
+					"<p>" +
+					"<select class='w3-input w3-padding-16 w3-border' required name='horario' >" +
+					"<option class='w3-input w3-padding-16 w3-border' value='' disabled selected >Horário</option>");
 
 		for (int j = 0; j <= horarios.length; j++) {
 
-			if (t.getHorario().equals(horarios[j]))
-				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "' selected>"
-						+ hrInfo[j] + "</option>");
-			else
-				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "'>" + hrInfo[j]
-						+ "</option>");
-
-		}
-
+			if (t.getHorario().equals(horarios[j])){
+				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "' selected>"+ hrInfo[j] + "</option>");
+				}else{
+				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "'>" + hrInfo[j]+ "</option>");
+				}
+			}
 		out.println("</select>");
 		out.println("</p>");
 
-		out.println("<!-- Numero da Sala -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Número da Sala' required name='sala' value='" + t.getSala() + "'>"
-				+ "			</p>");
+		out.println("<!-- Numero da Sala -->" + 
+					"<p>" +
+					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Número da Sala' required name='sala' value='" + t.getSala() + "'>" +
+					"</p>");
 
-		out.println("<!-- Qtde de Alunos -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Quantidade máxima de alunos' required name='quantidade' value='" + t.getQtde_maxima()
-				+ "'>" + "			</p>");
+		out.println("<!-- Qtde de Alunos -->" + 
+					"<p>" +
+					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Quantidade máxima de alunos' required name='quantidade' value='" + t.getQtde_maxima()+"'>" + 
+					"</p>");
 
-		out.println("<!-- Nível -->" + "			<p>"
-				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"
-				+ "					placeholder='Nível' disabled name='lvl'>" + "			</p>");
+		out.println("<!-- Nível -->" + 
+					"<p>" +
+					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Nível' disabled name='lvl'>" + 
+					"</p>");
 
 		out.println("<table>");
 		out.println("<tr>");
