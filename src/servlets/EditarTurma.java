@@ -46,7 +46,7 @@ public class EditarTurma extends HttpServlet {
 				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
 				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>" +
 
-				"<title>Alteração de Turma</title>" + "</head>);");
+				"<title>Alteração de Turma</title>" + "</head>");
 
 		out.println("<style>" + "body, h1, h2, h3, h4, h5, h6 {" + "	font-family: 'Montserrat', sans-serif" + "}" +
 

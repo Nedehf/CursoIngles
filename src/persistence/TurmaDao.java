@@ -16,10 +16,15 @@ public class TurmaDao {
 	public Turma buscar(String codigo) {
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from turma where aluno_cpf = ? and turma_codigo = ?";
+		String sql = "select * from turma where codigo = ?";
 		Turma turma = null;
 		try {
 
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
+			pstmt.setString(1, codigo);
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			if (rs.next()) {
@@ -51,7 +56,7 @@ public class TurmaDao {
 		}
 
 	}
-
+	
 	public void inserir(Turma turma) {
 
 		Connection conexao = null;
@@ -151,10 +156,13 @@ public class TurmaDao {
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from turma";
+		String sql = "select * from curso_ingles.turma order by nivel, horario";
 
 		try {
 
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
 			List<Turma> turmas = new ArrayList<Turma>();
 			Turma turma = null;
 			ResultSet rs = pstmt.executeQuery();

@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -33,6 +34,9 @@ public class CadastrarAluno extends HttpServlet {
 		AlunoDao dao = new AlunoDao();
 		
 		dao.inserir(al);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Index.html");
+		rd.forward(request, response);
 
 	}
 
