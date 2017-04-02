@@ -136,22 +136,22 @@ public class EditarTurma extends HttpServlet {
 					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Nível' disabled name='lvl'>" + 
 					"</p>");
 
-		out.println("<table>");
-		out.println("<tr>");
-
-		for (String Nivs : lvls) {
-
-			if (t.getNivel().equals(Nivs))
-				out.println(
-						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-								+ Nivs + "' checked>" + Nivs + "</td>");
-			else
-				out.println(
-						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-								+ Nivs + "'>" + Nivs + "</td>");
-		}
-		out.println("</tr>");
-		out.println("</table>");
+//		out.println("<table>");
+//		out.println("<tr>");
+//
+//		for (String Nivs : lvls) {
+//
+//			if (t.getNivel().equals(Nivs))
+//				out.println(
+//						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
+//								+ Nivs + "' checked>" + Nivs + "</td>");
+//			else
+//				out.println(
+//						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
+//								+ Nivs + "'>" + Nivs + "</td>");
+//		}
+//		out.println("</tr>");
+//		out.println("</table>");
 
 		out.println("<!-- Status -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"

@@ -13,6 +13,36 @@ import beans.Turma;
 
 public class TurmaDao {
 	
+	public int AlunosPorTurma(String codigo) {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select count(*) from aluno a, turma t, matricula m where t.codigo = m.turma_codigo and m.aluno_cpf = a.cpf  and t.codigo = ?";
+		int cont = 0;
+		try {
+
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
+			pstmt.setString(1, codigo);
+			
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String quantidade = rs.getString("count(*)");
+				
+				cont = Integer.parseInt(quantidade);
+
+			}
+
+			rs.close();
+			pstmt.close();
+			return cont;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	
 	public Turma buscar(String codigo) {
 		Connection conexao = null;
 		PreparedStatement pstmt = null;

@@ -2,6 +2,7 @@ package testes_main;
 
 import beans.Aluno;
 import persistence.AlunoDao;
+import persistence.TurmaDao;
 
 public class Main {
 
@@ -19,7 +20,12 @@ public class Main {
 		
 	//dao.inserir(aluno);
 	
-		dao.remover("123", aluno);
+		//dao.remover("123", aluno);
+	
+		TurmaDao tdao = new TurmaDao();
+		System.out.println(tdao.AlunosPorTurma("123456"));
+		
+		
 
 	}
 
