@@ -30,17 +30,17 @@ public class ListarTurmas extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 
-		out.println("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset='ISO-8859-1'>"
+		out.println("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset=\"ISO-8859-1\">"
 				+ "<title>Lista de Turmas</title>");
 		
-		out.println("<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + "<link rel='stylesheet'"
-				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
-				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"
+		out.println("<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/3/w3.css\">" + "<link rel=\"stylesheet\""
+				+ "	href=\"https://fonts.googleapis.com/css?family=Montserrat\">" + "<link rel=\"stylesheet\""
+				+ "	href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">"
 				+ "</head>"
 				);
 		
 		out.println("<style>" + 
-				"#customers {font-family: 'Montserrat', sans-serif; border-collapse: collapse; width: 100%; }" +
+				"#customers {font-family: \"Montserrat\", sans-serif; border-collapse: collapse; width: 100%; }" +
 
 				"#customers td, #customers th { border: 1px solid #ddd; padding: 4px; }" +
 
@@ -52,23 +52,23 @@ public class ListarTurmas extends HttpServlet {
 
 				"</style>");
 
-		out.println("<body class='w3-black'>" +
+		out.println("<body class=\"w3-black\">" +
 
-				"<div class='w3-content w3-text-grey'" + "	style='margin-bottom: 10px; margin-left: 10px;'>"
-				+ "	<h4 style='margin-bottom: -20px;'>Turmas</h4>" + "	<hr class='w3-opacity'"
-				+ "		style='display: inline-block; width: 80px; margin-bottom: 10px;'>" + "</div>" +
+				"<div class=\"w3-content w3-text-grey\"" + "	style=\"margin-bottom: 10px; margin-left: 10px;\">"
+				+ "	<h4 style=\"margin-bottom: -20px;\">Turmas</h4>" + "	<hr class=\"w3-opacity\""
+				+ "		style=\"display: inline-block; width: 80px; margin-bottom: 10px;\">" + "</div>" +
 
 				// Criando cabeçalho da tabela
-				"<table class='w3-white w3-center' id='customers'>" + "	<tr>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Cod Turma</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Nível</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Professor</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Horário</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Nª Sala</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Qtde de Alunos</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'>Status</th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'></th>"
-				+ "		<th class='w3-dark-grey w3-xlarge w3-padding-32'></th>" + "	</tr>");
+				"<table class=\"w3-white w3-center\" id=\"customers\">" + "	<tr>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Cod Turma</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Nível</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Professor</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Horário</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Nª Sala</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Qtde de Alunos</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Status</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>" + "	</tr>");
 
 		// Adicionando turmas na tabela
 		for (Turma t : turmas) {
@@ -83,14 +83,14 @@ public class ListarTurmas extends HttpServlet {
 						"<td>"+t.getSala()+"</td>" + 
 						"<td>"+t.getQtde_maxima()+"</td>" + 
 						"<td>"+t.getStatus()+"</td>" +
-						"<td><a href='DeletarTurma?codturma="+t.getCodigo()+"' onclick='return confirm(\"Deseja Deletar Registro?\")'> <img src='Resources\\Bin_01.png'alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href=\"DeletarTurma?codturma="+t.getCodigo()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\"alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
 						"</a></td>"+
-						"<td><a href='EditarTurma?codturma="+t.getCodigo()+"'> <img src='Resources\\Edit_01.png'alt='Edit.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href=\"EditarTurma?codturma="+t.getCodigo()+"\"> <img src=\"Resources\\Edit_01.png\"alt=\"Edit.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
 						"</a></td>" + "</tr>");
 			} else {
 
 				// Turmas INATIVAS
-				out.println("<tr style='background-color: #ce0e0e'>" + 
+				out.println("<tr style=\"background-color: #ce0e0e\">" + 
 						"<td>"+t.getCodigo()+"</td>" + 
 						"<td>"+t.getNivel()+"</td>" + 
 						"<td>"+t.getProfessor()+"</td>" + 
@@ -98,9 +98,9 @@ public class ListarTurmas extends HttpServlet {
 						"<td>"+t.getSala()+"</td>" + 
 						"<td>"+t.getQtde_maxima()+"</td>" + 
 						"<td>"+t.getStatus()+"</td>" +
-						"<td><a href='DeletarTurma?codturma="+t.getCodigo()+"' onclick='return confirm(\"Deseja Deletar Registro?\")'> <img src='Resources\\Bin_01.png' alt='delete.ico' style='width: 18px; height: 18px; border: 0;'>" + 
+						"<td><a href=\"DeletarTurma?codturma="+t.getCodigo()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\" alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
 						"</a></td>" +
-						"<td><img src='Resources\\Edit_01.png' alt='Edit.ico' class='w3-opacity-max' style='width: 18px; height: 18px; border: 0;'>"
+						"<td><img src=\"Resources\\Edit_01.png\" alt=\"Edit.ico\" class=\"w3-opacity-max\" style=\"width: 18px; height: 18px; border: 0;\">"
 						+ "</td>" + "</tr>");
 			}
 
@@ -110,7 +110,7 @@ public class ListarTurmas extends HttpServlet {
 		// Fim do Html
 		out.println("</table>");
 		
-		out.print("<a href='Index.html'>Voltar ao Início</a>");
+		out.print("<a href=\"Index.html\">Voltar ao Início</a>");
 		out.println("</body>");
 		out.println("</html>");
 		
