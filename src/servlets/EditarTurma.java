@@ -97,7 +97,7 @@ public class EditarTurma extends HttpServlet {
 
 		out.println("<!-- Codigo da Turma -->" + 
 					"<p>" +
-					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Código da Turma' required name='codigo' value='"+ t.getCodigo() +"'>" +
+					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Código da Turma' disabled name='codigo' value='"+ t.getCodigo() +"'>" +
 				 	"</p>");
 
 		out.println("<!-- Professor -->" + 
@@ -110,7 +110,7 @@ public class EditarTurma extends HttpServlet {
 					"<select class='w3-input w3-padding-16 w3-border' required name='horario' >" +
 					"<option class='w3-input w3-padding-16 w3-border' value='' disabled selected >Horário</option>");
 
-		for (int j = 0; j <= horarios.length; j++) {
+		for (int j = 0; j < horarios.length; j++) {
 
 			if (t.getHorario().equals(horarios[j])){
 				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "' selected>"+ hrInfo[j] + "</option>");
@@ -118,9 +118,11 @@ public class EditarTurma extends HttpServlet {
 				out.println("<option class='w3-input w3-padding-16 w3-border' value='" + horarios[j] + "'>" + hrInfo[j]+ "</option>");
 				}
 			}
+
 		out.println("</select>");
 		out.println("</p>");
 
+		
 		out.println("<!-- Numero da Sala -->" + 
 					"<p>" +
 					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Número da Sala' required name='sala' value='" + t.getSala() + "'>" +
@@ -136,22 +138,22 @@ public class EditarTurma extends HttpServlet {
 					"<input class='w3-input w3-padding-16 w3-border' type='text' placeholder='Nível' disabled name='lvl'>" + 
 					"</p>");
 
-//		out.println("<table>");
-//		out.println("<tr>");
-//
-//		for (String Nivs : lvls) {
-//
-//			if (t.getNivel().equals(Nivs))
-//				out.println(
-//						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-//								+ Nivs + "' checked>" + Nivs + "</td>");
-//			else
-//				out.println(
-//						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
-//								+ Nivs + "'>" + Nivs + "</td>");
-//		}
-//		out.println("</tr>");
-//		out.println("</table>");
+		out.println("<table>");
+		out.println("<tr>");
+
+		for (String Nivs : lvls) {
+
+			if (t.getNivel().equals(Nivs))
+				out.println(
+						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
+								+ Nivs + "' checked>" + Nivs + "</td>");
+			else
+				out.println(
+						"<td> <input class='w3-radio w3-padding-16 w3-border' type='radio' required name='nivel' value='"
+								+ Nivs + "'>" + Nivs + "</td>");
+		}
+		out.println("</tr>");
+		out.println("</table>");
 
 		out.println("<!-- Status -->" + "			<p>"
 				+ "				<input class='w3-input w3-padding-16 w3-border' type='text'"

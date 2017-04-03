@@ -26,7 +26,7 @@ public class AtualizarTurma extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String cod = request.getParameter("codigo");
+		String cod = request.getParameter("codturma");
 		String lvl = request.getParameter("nivel");
 		String prof = request.getParameter("professor");
 		String hr = request.getParameter("horario");
@@ -34,10 +34,22 @@ public class AtualizarTurma extends HttpServlet {
 		int qtde = Integer.parseInt(request.getParameter("quantidade"));
 		String sts = request.getParameter("status");
 
+		System.out.println(cod);
+		System.out.println(lvl);
+		System.out.println(prof);
+		System.out.println(hr);
+		System.out.println(sala);
+		System.out.println(qtde);
+		System.out.println(sts);
+		
 		Turma turma = new Turma(cod, lvl, prof, hr, sala, qtde, sts);
 		TurmaDao tdao = new TurmaDao();
-
+		
+		System.out.println("Cheguei aqui 02");
+		
 		tdao.alterar(cod,turma);
+		
+		System.out.println("Cheguei aqui 03");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");
 		rd.forward(request, response);
