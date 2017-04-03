@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,15 +33,12 @@ public class ListarTurmas extends HttpServlet {
 		out.println("<!DOCTYPE html>" + "<html>" + "<head>" + "<meta charset='ISO-8859-1'>"
 				+ "<title>Lista de Turmas</title>");
 		
-		out.println("<script language='text/javascript' src='functions.js'>");
-		
 		out.println("<link rel='stylesheet' href='https://www.w3schools.com/w3css/3/w3.css'>" + "<link rel='stylesheet'"
 				+ "	href='https://fonts.googleapis.com/css?family=Montserrat'>" + "<link rel='stylesheet'"
 				+ "	href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>"
 				+ "</head>"
 				);
-
-		// CSS
+		
 		out.println("<style>" + 
 				"#customers {font-family: 'Montserrat', sans-serif; border-collapse: collapse; width: 100%; }" +
 
