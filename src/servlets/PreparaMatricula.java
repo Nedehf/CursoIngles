@@ -152,7 +152,7 @@ public class PreparaMatricula extends HttpServlet {
 		out.println("<body class=\"w3-black\">" +
 
 				"<div class=\"w3-content w3-text-grey\"" + "	style=\"margin-bottom: 10px; margin-left: 10px;\">"
-				+ "	<h4 style=\"margin-bottom: -20px;\">Turmas</h4>" + "	<hr class=\"w3-opacity\""
+				+ "	<h4 style=\"margin-bottom: -20px;\"> </h4>" + "	<hr class=\"w3-opacity\""
 				+ "		style=\"display: inline-block; width: 80px; margin-bottom: 10px;\">" + "</div>" +
 
 				// Criando cabeçalho da tabela

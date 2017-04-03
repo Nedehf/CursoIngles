@@ -38,8 +38,7 @@ public class EditarTurma extends HttpServlet {
 		TurmaDao dao = new TurmaDao();
 		Turma t = dao.buscar(codturma);
 		
-		// pera
-		
+
 		
 
 

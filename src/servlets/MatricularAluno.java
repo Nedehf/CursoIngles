@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Matricula;
+import beans.Turma;
 import persistence.MatriculaDao;
+import persistence.TurmaDao;
 
 @WebServlet("/MatricularAluno")
 public class MatricularAluno extends HttpServlet {
@@ -38,7 +40,18 @@ public class MatricularAluno extends HttpServlet {
 		MatriculaDao mdao = new MatriculaDao();
 		Matricula m = new Matricula(cpf,cod,date,0,1);
 		
+		TurmaDao tdao = new TurmaDao();
+		Turma t = new Turma();
+		
+		
+		
+	//	if(tdao.AlunosPorTurma(codigo) < qtde_maxima){
 		mdao.inserir(m);
+	//	}else{
+			
+	//	}
+		
+		
 		
 //		PrintWriter out = response.getWriter();
 		

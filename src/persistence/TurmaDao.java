@@ -13,6 +13,43 @@ import beans.Turma;
 
 public class TurmaDao {
 	
+	public String ReachCodigo(String nivel, String professor, String horario, String sala, int qtde_maxima, String status) {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select codigo from turma where nivel = ? and professor = ? and horario = ? and sala = ? and qtde_maxima = ? and status = ? limit 1";
+		String id = "";
+		try {
+
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
+			pstmt.setString(1, nivel);
+            pstmt.setString(2, professor);
+            pstmt.setString(3, horario);
+            pstmt.setString(4, sala);
+            pstmt.setInt(5, qtde_maxima);
+            pstmt.setString(6, status);
+            pstmt.setString(7, status);
+
+			
+			ResultSet rs = pstmt.executeQuery();
+
+			
+				id = rs.getString("codigo");
+				
+				
+
+			
+
+			rs.close();
+			pstmt.close();
+			return id;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	
 	public int AlunosPorTurma(String codigo) {
 		Connection conexao = null;
 		PreparedStatement pstmt = null;

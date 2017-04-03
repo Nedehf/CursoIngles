@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -33,8 +34,9 @@ public class AtualizarTurma extends HttpServlet {
 		TurmaDao dao = new TurmaDao();
 		Turma t = dao.buscar(codturma);
 		List<Turma> turmas = dao.mostrar(); */
+		
+		
 
-		//imagina ele bem aqui v pera nao saquei
 		String cod = request.getParameter("codigo");
 		String lvl = request.getParameter("nivel");
 		String prof = request.getParameter("professor");
@@ -43,19 +45,28 @@ public class AtualizarTurma extends HttpServlet {
 		int qtde = Integer.parseInt(request.getParameter("quantidade"));
 		String sts = request.getParameter("status");
 
-//		System.out.println(cod);
-//		System.out.println(lvl);
-//		System.out.println(prof);
-//		System.out.println(hr);
-//		System.out.println(sala);
-//		System.out.println(qtde);
-//		System.out.println(sts);
+		System.out.println(cod);
+		System.out.println(lvl);
+		System.out.println(prof);
+		System.out.println(hr);
+		System.out.println(sala);
+		System.out.println(qtde);
+		System.out.println(sts);
 		
-		Turma t = new Turma(cod,lvl,prof,hr,sala,qtde,sts);
+		
+		
+		
 		TurmaDao tdao = new TurmaDao();
+		
+		System.out.println(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts));
+		
+		Turma t = new Turma(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts),lvl,prof,hr,sala,qtde,sts);
+		
 		
 		//e aqui? pera 
 		tdao.alterar(t);
+		
+		
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");

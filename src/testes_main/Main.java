@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.jasper.tagplugins.jstl.core.ForEach;
 
 import beans.Aluno;
+import beans.Turma;
 import persistence.AlunoDao;
+import persistence.TurmaDao;
 
 public class Main {
 
@@ -25,17 +27,21 @@ public class Main {
 	
 		//dao.remover("123", aluno);
 	
-//		TurmaDao tdao = new TurmaDao();
-//		Turma t = tdao.buscar("123456");
+		TurmaDao tdao = new TurmaDao();
+		Turma t = tdao.buscar("123456");
 //		System.out.println(t.getCodigo());
 //		System.out.println(t.getHorario());
 		
-		AlunoDao aldao = new AlunoDao();
-		List<Aluno> als = aldao.mostrar();
+		//AlunoDao aldao = new AlunoDao();
+		//List<Aluno> als = aldao.mostrar();
 		
-		for (Aluno al : als) {
-			System.out.println(al.getCpf());
-		}
+		
+		System.out.println(tdao.ReachCodigo("Avançado 2", "Dan", "24EFM", "9", 12, "ATIVA"));
+		
+		
+	//	for (Aluno al : als) {
+		//	System.out.println(al.getCpf());
+	//	}
 			
 
 	
