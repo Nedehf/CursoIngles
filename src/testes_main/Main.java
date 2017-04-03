@@ -1,9 +1,11 @@
 package testes_main;
 
+import java.util.List;
+
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import beans.Aluno;
-import beans.Turma;
 import persistence.AlunoDao;
-import persistence.TurmaDao;
 
 public class Main {
 
@@ -23,15 +25,20 @@ public class Main {
 	
 		//dao.remover("123", aluno);
 	
-		TurmaDao tdao = new TurmaDao();
-		Turma t = tdao.buscar("123456");
-		System.out.println(t.getCodigo());
-		System.out.println(t.getHorario());
+//		TurmaDao tdao = new TurmaDao();
+//		Turma t = tdao.buscar("123456");
+//		System.out.println(t.getCodigo());
+//		System.out.println(t.getHorario());
 		
+		AlunoDao aldao = new AlunoDao();
+		List<Aluno> als = aldao.mostrar();
+		
+		for (Aluno al : als) {
+			System.out.println(al.getCpf());
+		}
+			
 
-
-		tdao.alterar(t.getNivel(), "naoeohanis", t.getHorario(), t.getSala(), t.getQtde_maxima(), t.getStatus(), t.getCodigo());
-		System.out.println(t.getProfessor());
+	
 		
 //vai fazendo e testando por aqui ok
 	}

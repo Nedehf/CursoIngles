@@ -109,7 +109,7 @@ public class AlunoDao {
 			pstmt = conexao.prepareStatement(sql);
 			
 			List<Aluno> alunos = new ArrayList<Aluno>();
-			Aluno aluno = null;
+//			Aluno aluno = null;
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -117,11 +117,11 @@ public class AlunoDao {
 				String nome = rs.getString("nome");
 				String email = rs.getString("email");
 
-				aluno = new Aluno();
+				Aluno aluno = new Aluno(cpf,nome,email);
 
-				aluno.setCpf(cpf);
-				aluno.setNome(nome);
-				aluno.setEmail(email);
+//				aluno.setCpf(cpf);
+//				aluno.setNome(nome);
+//				aluno.setEmail(email);
 
 				alunos.add(aluno);
 			}
