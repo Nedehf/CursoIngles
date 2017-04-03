@@ -3,6 +3,7 @@ package servlets;
 import java.io.IOException;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +41,9 @@ public class MatricularAluno extends HttpServlet {
 		mdao.inserir(m);
 		
 //		PrintWriter out = response.getWriter();
+		
+		RequestDispatcher rd = request.getRequestDispatcher("Index.html");
+		rd.forward(request, response);
 
 	}
 

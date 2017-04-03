@@ -126,6 +126,7 @@ public class PreparaMatricula extends HttpServlet {
 			out.println("<option value=\"" + turma.getCodigo() + "\">" + turma.getNivel() + " - " + turma.getHorario()
 					+ " (" + turma.getCodigo() + ")" + "</option>");
 		}
+		out.println("				</select>");
 		out.println("			</p>");
 
 		out.println("			<!-- Submit -->");
