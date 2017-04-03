@@ -42,7 +42,7 @@ public class MatricularAluno extends HttpServlet {
 		
 //		PrintWriter out = response.getWriter();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("Index.html");
+		RequestDispatcher rd = request.getRequestDispatcher("PreparaMatricula");
 		rd.forward(request, response);
 
 	}

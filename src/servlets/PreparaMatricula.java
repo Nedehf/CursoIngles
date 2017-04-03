@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Aluno;
+import beans.Matricula;
 import beans.Turma;
 import persistence.AlunoDao;
+import persistence.MatriculaDao;
 import persistence.TurmaDao;
 
 @WebServlet("/PreparaMatricula")
@@ -32,6 +34,9 @@ public class PreparaMatricula extends HttpServlet {
 
 		AlunoDao adao = new AlunoDao();
 		List<Aluno> alunos = adao.mostrar();
+		
+		MatriculaDao mdao = new MatriculaDao();
+		List<Matricula> matriculas = mdao.mostrar();
 		
 //		for (Aluno al : alunos) {
 //			System.out.println(al.getCpf()+""+al.getNome());
@@ -136,6 +141,77 @@ public class PreparaMatricula extends HttpServlet {
 		out.println("				</button>");
 		out.println("			</p>");
 		out.println("		</form>");
+
+
+
+
+
+
+
+		
+		out.println("<body class=\"w3-black\">" +
+
+				"<div class=\"w3-content w3-text-grey\"" + "	style=\"margin-bottom: 10px; margin-left: 10px;\">"
+				+ "	<h4 style=\"margin-bottom: -20px;\">Turmas</h4>" + "	<hr class=\"w3-opacity\""
+				+ "		style=\"display: inline-block; width: 80px; margin-bottom: 10px;\">" + "</div>" +
+
+				// Criando cabeçalho da tabela
+				"<table class=\"w3-white w3-center\" id=\"customers\">" + "	<tr>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">CPF Aluno</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Cod Turma</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Data Mat</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Nota</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Freq</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>" + "	</tr>");
+
+		
+		
+		
+// Adicionando turmas na tabela
+		for (Matricula m : matriculas) {
+
+			// Turmas ATIVAS
+		
+				out.println("<tr>" + 
+						"<td>"+m.getAluno_cpf()+"</td>" + 
+						"<td>"+m.getTurma_codigo()+"</td>" + 
+						"<td>"+m.getData_matricula()+"</td>" + 
+						"<td>"+m.getNota()+"</td>" +
+						"<td>"+m.getFrequencia()+"</td>" + 
+						"<td><a href=\"DeletarTurma?codturma="+m.getAluno_cpf()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\"alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
+						"</a></td>"+
+						"<td><a href=\"EditarTurma?codturma="+m.getTurma_codigo()+"\"> <img src=\"Resources\\Edit_01.png\"alt=\"Edit.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
+						"</a></td>" + "</tr>");
+			
+
+			
+
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 		out.println("<p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
 

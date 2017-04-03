@@ -83,13 +83,16 @@ public class MatriculaDao {
 
 	}
 
-	public List<Matricula> Matricula() {
+	public List<Matricula> mostrar() {
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "select * from matricula";
+		String sql = "select * from matricula group by data_matricula desc";
 
 		try {
+			
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
 
 			List<Matricula> matriculas = new ArrayList<Matricula>();
 			Matricula matricula = null;
