@@ -26,7 +26,7 @@ public class AtualizarTurma extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String cod = request.getParameter("codturma");
+		String cod = request.getParameter("codigo");
 		String lvl = request.getParameter("nivel");
 		String prof = request.getParameter("professor");
 		String hr = request.getParameter("horario");

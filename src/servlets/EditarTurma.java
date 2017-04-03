@@ -37,6 +37,7 @@ public class EditarTurma extends HttpServlet {
 		String codturma = request.getParameter("codturma");
 		TurmaDao dao = new TurmaDao();
 		Turma t = dao.buscar(codturma);
+		
 
 
 		PrintWriter out = response.getWriter();
