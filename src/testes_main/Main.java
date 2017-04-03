@@ -1,6 +1,7 @@
 package testes_main;
 
 import beans.Aluno;
+import beans.Turma;
 import persistence.AlunoDao;
 import persistence.TurmaDao;
 
@@ -23,10 +24,15 @@ public class Main {
 		//dao.remover("123", aluno);
 	
 		TurmaDao tdao = new TurmaDao();
-		System.out.println(tdao.AlunosPorTurma("123456"));
-		
+		Turma t = tdao.buscar("123456");
+		System.out.println(t.getCodigo());
+		System.out.println(t.getHorario());
 		
 
+
+		tdao.alterar(t.getCodigo(), t);
+		
+//vai fazendo e testando por aqui ok
 	}
 
 }

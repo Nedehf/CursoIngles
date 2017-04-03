@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,6 +27,14 @@ public class AtualizarTurma extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+
+		
+		/*String codturma = request.getParameter("codturma");
+		TurmaDao dao = new TurmaDao();
+		Turma t = dao.buscar(codturma);
+		List<Turma> turmas = dao.mostrar(); */
+
+		//imagina ele bem aqui v pera nao saquei
 		String cod = request.getParameter("codigo");
 		String lvl = request.getParameter("nivel");
 		String prof = request.getParameter("professor");

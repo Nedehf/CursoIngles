@@ -67,7 +67,8 @@ public class TurmaDao {
 				String status = rs.getString("status");
 
 				turma = new Turma();
-
+				
+				turma.setCodigo(codigoTurma);
 				turma.setNivel(nivel);
 				turma.setProfessor(professor);
 				turma.setHorario(horario);
