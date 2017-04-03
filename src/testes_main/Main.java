@@ -30,7 +30,8 @@ public class Main {
 		
 
 
-		tdao.alterar(t.getCodigo(), t);
+		tdao.alterar(t.getNivel(), "naoeohanis", t.getHorario(), t.getSala(), t.getQtde_maxima(), t.getStatus(), t.getCodigo());
+		System.out.println(t.getProfessor());
 		
 //vai fazendo e testando por aqui ok
 	}

@@ -147,7 +147,7 @@ public class TurmaDao {
 
 	}
 
-	public void alterar(String codigo, Turma turma) {
+	public void alterar(Turma turma) {
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
@@ -157,7 +157,7 @@ public class TurmaDao {
 
 			conexao = Conexao.getConnection();
 			pstmt = conexao.prepareStatement(sql);
-
+//
 			pstmt.setString(1, turma.getNivel());
 			pstmt.setString(2, turma.getProfessor());
 			pstmt.setString(3, turma.getHorario());
@@ -166,7 +166,9 @@ public class TurmaDao {
 			pstmt.setString(6, turma.getStatus());
 			pstmt.setString(7, turma.getCodigo());
 
-			pstmt.executeUpdate();
+			//pstmt.executeUpdate();
+			pstmt.execute();
+			
 		} catch (SQLException e) {
 
 			e.printStackTrace();
