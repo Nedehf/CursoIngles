@@ -53,6 +53,8 @@ public class MatricularAluno extends HttpServlet {
 			
 		
 			//insira aqui a mensagem de erro :D
+			System.out.println("Erro! Não é possível adicionar mais alunos que o limite.");
+			System.err.print("Erro! Não é possível adicionar mais alunos que o limite.");
 			
 			
 		}
