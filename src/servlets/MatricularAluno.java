@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -42,14 +43,19 @@ public class MatricularAluno extends HttpServlet {
 		
 		TurmaDao tdao = new TurmaDao();
 		Turma t = new Turma();
+		t = tdao.buscar(cod);
 		
 		
 		
-	//	if(tdao.AlunosPorTurma(codigo) < qtde_maxima){
+		if(tdao.AlunosPorTurma(cod) < t.getQtde_maxima()){
 		mdao.inserir(m);
-	//	}else{
+		}else{
 			
-	//	}
+		
+			//insira aqui a mensagem de erro :D
+			
+			
+		}
 		
 		
 		
