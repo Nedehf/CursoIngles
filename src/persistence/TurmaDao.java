@@ -13,11 +13,12 @@ import beans.Turma;
 
 public class TurmaDao {
 	
-	public String ReachCodigo(String nivel, String professor, String horario, String sala, int qtde_maxima, String status) {
+	public Turma ReachCodigo(String nivel, String professor, String horario, String sala, int qtde_maxima, String status) {
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "select codigo from turma where nivel = ? and professor = ? and horario = ? and sala = ? and qtde_maxima = ? and status = ? limit 1";
-		String id = "";
+		String sql = "select * from turma where nivel = ? and professor = ? and horario = ? and sala = ? and qtde_maxima = ? and status = ?";
+		Turma turma = null;
+		
 		try {
 
 			conexao = Conexao.getConnection();
@@ -29,26 +30,43 @@ public class TurmaDao {
             pstmt.setString(4, sala);
             pstmt.setInt(5, qtde_maxima);
             pstmt.setString(6, status);
-            pstmt.setString(7, status);
 
 			
 			ResultSet rs = pstmt.executeQuery();
 
-			
-				id = rs.getString("codigo");
+			if (rs.next()) {
+				String codigoTurma = rs.getString("codigo");
+				String lvl = rs.getString("nivel");
+				String prof = rs.getString("professor");
+				String hr = rs.getString("horario");
+				String sal = rs.getString("sala");
+				int qtde = rs.getInt("qtde_maxima");
+				String stats = rs.getString("status");
+
+				turma = new Turma();
 				
+				turma.setCodigo(codigoTurma);
+				turma.setNivel(lvl);
+				turma.setProfessor(prof);
+				turma.setHorario(hr);
+				turma.setSala(sal);
+				turma.setQtde_maxima(qtde);
+				turma.setStatus(stats);
 				
 
-			
+				System.out.println(stats);
+				
+			}
 
 			rs.close();
 			pstmt.close();
-			return id;
+			return turma;
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 
 	}
+
 	
 	public int AlunosPorTurma(String codigo) {
 		Connection conexao = null;
@@ -80,50 +98,49 @@ public class TurmaDao {
 
 	}
 	
-	public Turma buscar(String codigo) {
-		Connection conexao = null;
-		PreparedStatement pstmt = null;
-		String sql = "select * from turma where codigo = ?";
-		Turma turma = null;
-		try {
+    public Turma buscar(String id) {
+        Connection con = null;
+        PreparedStatement stmt = null;
 
-			conexao = Conexao.getConnection();
-			pstmt = conexao.prepareStatement(sql);
-			
-			pstmt.setString(1, codigo);
-			
-			ResultSet rs = pstmt.executeQuery();
+        Turma turma = null;
 
-			if (rs.next()) {
-				String codigoTurma = rs.getString("codigo");
-				String nivel = rs.getString("nivel");
-				String professor = rs.getString("professor");
-				String horario = rs.getString("horario");
-				String sala = rs.getString("sala");
-				int qtde_maxima = rs.getInt("qtde_maxima");
-				String status = rs.getString("status");
+        try {
+            con = Conexao.getConnection();
+            stmt = con.prepareStatement(
+                    "SELECT * FROM turma WHERE  codigo = ?");
+            stmt.setString(1, id);
 
-				turma = new Turma();
-				
-				turma.setCodigo(codigoTurma);
-				turma.setNivel(nivel);
-				turma.setProfessor(professor);
-				turma.setHorario(horario);
-				turma.setSala(sala);
-				turma.setQtde_maxima(qtde_maxima);
-				turma.setStatus(status);
-				
+            ResultSet rs = stmt.executeQuery();
 
-			}
+            if (rs.next()) {
+                String codigo = rs.getString("codigo");
+                String nivel = rs.getString("nivel");
+                String professor = rs.getString("professor");
+                String horario = rs.getString("horario");
+                String sala = rs.getString("sala");
+                int qtde_maxima = rs.getInt("qtde_maxima");
+                String status = rs.getString("status");
 
-			rs.close();
-			pstmt.close();
-			return turma;
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
+                turma = new Turma(codigo, nivel, professor, horario, sala, qtde_maxima, status);
+            }
 
-	}
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return turma;
+    }
 	
 	public void inserir(Turma turma) {
 

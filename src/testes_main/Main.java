@@ -28,7 +28,19 @@ public class Main {
 		//dao.remover("123", aluno);
 	
 		TurmaDao tdao = new TurmaDao();
-		Turma t = tdao.buscar("123456");
+		
+		
+		//String stats = t.getSala();
+		
+		//System.out.println(stats);
+		
+		Turma t = tdao.buscar("12");
+		System.out.println(t.getCodigo());
+		
+		Turma turminha;
+		turminha = tdao.ReachCodigo("Avançado 2", "Dan", "24EFM", "9", 12, "ATIVA");
+		System.out.println(turminha.getCodigo());
+		
 //		System.out.println(t.getCodigo());
 //		System.out.println(t.getHorario());
 		
@@ -36,7 +48,7 @@ public class Main {
 		//List<Aluno> als = aldao.mostrar();
 		
 		
-		System.out.println(tdao.ReachCodigo("Avançado 2", "Dan", "24EFM", "9", 12, "ATIVA"));
+		//System.out.println(tdao.ReachCodigo("Avançado 2", "Dan", "24EFM", "9", 12, "ATIVA"));
 		
 		
 	//	for (Aluno al : als) {

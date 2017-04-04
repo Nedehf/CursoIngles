@@ -100,7 +100,7 @@ public class EditarTurma extends HttpServlet {
 
 		out.println("<!-- Codigo da Turma -->" + 
 					"<p>" +
-					"<input class=\"w3-input w3-padding-16 w3-border\" type=\"text\" placeholder=\"Código da Turma\" disabled name=\"codigo\" value=\""+ t.getCodigo() +"\">" +
+					"<input class=\"w3-input w3-padding-16 w3-border\" type=\"text\" placeholder=\"Código da Turma\" required name=\"codigo\" value=\""+ t.getCodigo() +"\">" +
 				 	"</p>");
 
 		out.println("<!-- Professor -->" + 

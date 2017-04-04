@@ -58,9 +58,9 @@ public class AtualizarTurma extends HttpServlet {
 		
 		TurmaDao tdao = new TurmaDao();
 		
-		System.out.println(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts));
+		//System.out.println(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts));
 		
-		Turma t = new Turma(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts),lvl,prof,hr,sala,qtde,sts);
+		Turma t = new Turma(cod,lvl,prof,hr,sala,qtde,sts);
 		
 		
 		//e aqui? pera 
