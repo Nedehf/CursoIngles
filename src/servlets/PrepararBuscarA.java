@@ -24,6 +24,8 @@ public class PrepararBuscarA extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String codturma = request.getParameter("codigo");
+		
 		AlunoDao aldao = new AlunoDao();
 		List<Aluno> als = aldao.mostrar();
 		
@@ -137,7 +139,7 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("             <!-- Campos -->");
 		out.println("             <p>Informe o Cod da Turma:</p>");
 
-		out.println("             <form action=\"BuscarAluno\" method=\"post\">");
+		out.println("             <form action=\"PrepararBuscarA\" method=\"post\">");
 
 
 
@@ -172,7 +174,7 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("                         </div>");
 		out.println("                         <div class=\"modal-body\">");
 		out.println("                           ");
-		out.println("                           <form action=\"AtualizarMatricula\" method=\"post\">");
+		out.println("                           <form action=\"FinalizarBuscarA\" method=\"post\">");
 		out.println(" 			");
 		out.println(" 			<!-- Nota -->");
 		out.println(" 				<p>");
@@ -186,6 +188,16 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" 						placeholder=\"Frequência\" required name=\"freq\">");
 		out.println(" 				</p>");
 		out.println(" 				");
+		out.println(" 				<!-- CPF -->");
+		out.println(" 				<p>");
+		out.println(" 					<input class=\"w3-input w3-padding-16 w3-border\" type=\"text\"");
+		out.println(" 						placeholder=\"CPF\" required name=\"cpf\">");
+		out.println(" 				</p>");
+		out.println(" 				<!-- Codigo Turma -->");
+		out.println(" 				<p>");
+		out.println(" 					<input class=\"w3-input w3-padding-16 w3-border\" type=\"hidden\"");
+		out.println(" 						name=\"codigo\" value=\""+codturma+"\">");
+		out.println(" 				</p>");
 		out.println(" 						<!-- Submit -->");
 		out.println(" 				<p>");
 		out.println(" 					<button class=\"w3-button w3-padding-large\" type=\"submit\">");
@@ -193,11 +205,6 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" 					</button>");
 		out.println(" 				</p>");
 		out.println(" 				");
-		out.println(" 				<!-- CPF -->");
-		out.println(" 				<p>");
-		out.println(" 					<input class=\"w3-input w3-padding-16 w3-border\" type=\"hidden\"");
-		out.println(" 						name=\"cpf\" value=\"<!-- valor -->\">");
-		out.println(" 				</p>");
 		out.println(" 			");
 		out.println(" 			</form>");
 		out.println(" 			");
@@ -224,14 +231,19 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("                     <th class=\"w3-dark-grey \">Frequência</th>");
 		out.println("                 </tr>");
 
+		for (Aluno st: als) {
+			int i =0;
+			Turma t = turmas.get(i);
+		
 		out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
-		out.println("                     <td>029.457.823-75</td>");
-		out.println("                     <td>José de Alencar</td>");
-		out.println("                     <td>alencar_ze@gmail.com</td>");
-		out.println("                     <td>2017-04-03 22:26:54.0</td>");
-		out.println("                     <td>0.0</td>");
-		out.println("                     <td>1.0</td>");
+		out.println("                     <td>"+st.getCpf()+"</td>");
+		out.println("                     <td>"+st.getNome()+"</td>");
+		out.println("                     <td>"+st.getEmail()+"</td>");
+		out.println("                     <td>"++"</td>");
+		out.println("                     <td>"++"</td>");
+		out.println("                     <td>"+t.getCodigo()+"</td>");
 		out.println("                 </tr>");
+		}
 		out.println("             </table>");
 		out.println("             <p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
 
