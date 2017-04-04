@@ -162,14 +162,14 @@ public class TurmaDao {
 			pstmt.setString(7, turma.getStatus());
 
 			pstmt.executeUpdate();
-			// pstmt.close();
+		
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// throw new RuntimeException(e);
+			
 		} finally {
 			try {
-				// if (conexao != null)
+				
 				pstmt.close();
 				conexao.close();
 			} catch (SQLException e) {

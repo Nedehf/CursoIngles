@@ -5,13 +5,12 @@ import java.util.Date;
 public class Matricula {
 
 	private Date data_matricula = new Date();
-	
+
 	private String aluno_cpf;
 	private String turma_codigo;
 	double nota;
 	double frequencia;
-	
-	
+
 	public Date getData_matricula() {
 		return data_matricula;
 	}
@@ -54,20 +53,18 @@ public class Matricula {
 
 	public Matricula() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Matricula(String aluno_cpf, String turma_codigo, Date data_matricula, double nota, double frequencia) {
 		super();
-		
+
 		this.aluno_cpf = aluno_cpf;
 		this.turma_codigo = turma_codigo;
 		this.data_matricula = data_matricula;
-		
+
 		this.nota = nota;
 		this.frequencia = frequencia;
 	}
-
-	
 
 }

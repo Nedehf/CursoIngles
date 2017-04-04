@@ -38,7 +38,8 @@ public class ListarTurmas extends HttpServlet {
 		out.println("    <title>Lista de Turmas</title>");
 		out.println("    <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/3/w3.css\">");
 		out.println("    <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat\">");
-		out.println("    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">");
+		out.println(
+				"    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">");
 		out.println("</head>");
 		out.println("<style>");
 		out.println("    #customers {");
@@ -82,58 +83,59 @@ public class ListarTurmas extends HttpServlet {
 		out.println("                <th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>");
 		out.println("            </tr>");
 
+		// Adicionando turmas na tabela
+		for (Turma t : turmas) {
 
-				// Adicionando turmas na tabela
-				for (Turma t : turmas) {
+			// Turmas ATIVAS
+			if (t.getStatus().equals("ATIVA")) {
+				out.println("<tr>");
+				out.println("<td>" + t.getCodigo() + "</td>");
+				out.println("<td>" + t.getNivel() + "</td>");
+				out.println("<td>" + t.getProfessor() + "</td>");
+				out.println("<td>" + t.getHorario() + "</td>");
+				out.println("<td>" + t.getSala() + "</td>");
+				out.println("<td>" + t.getQtde_maxima() + "</td>");
+				out.println("<td>" + t.getStatus() + "</td>");
+				out.println("<td>");
+				out.println("<a href=\"DeletarTurma?codturma=" + t.getCodigo()
+						+ "\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\"alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>");
+				out.println("</td>");
+				out.println("<td>");
+				out.println("<a href=\"EditarTurma?codturma=" + t.getCodigo()
+						+ "\"> <img src=\"Resources\\Edit_01.png\"alt=\"Edit.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>");
+				out.println("</td>");
+				out.println("<tr>");
+			} else {
 
-					// Turmas ATIVAS
-					if (t.getStatus().equals("ATIVA")) {
-						out.println("<tr>" );
-								out.println("<td>"+t.getCodigo()+"</td>" );
-								out.println("<td>"+t.getNivel()+"</td>" );
-								out.println("<td>"+t.getProfessor()+"</td>" );
-								out.println("<td>"+t.getHorario()+"</td>" );
-								out.println("<td>"+t.getSala()+"</td>" );
-								out.println("<td>"+t.getQtde_maxima()+"</td>" );
-								out.println("<td>"+t.getStatus()+"</td>" );
-				                out.println("<td>");
-		                        out.println("<a href=\"DeletarTurma?codturma="+t.getCodigo()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\"alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>"); 
-								out.println("</td>");
-								out.println("<td>");
-		                        out.println("<a href=\"EditarTurma?codturma="+t.getCodigo()+"\"> <img src=\"Resources\\Edit_01.png\"alt=\"Edit.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>");
-								out.println("</td>");
-		                        out.println("<tr>");
-					} else {
+				// Turmas INATIVAS
+				out.println("<tr style=\"background-color: #ce0e0e\">");
+				out.println("<td>" + t.getCodigo() + "</td>");
+				out.println("<td>" + t.getNivel() + "</td>");
+				out.println("<td>" + t.getProfessor() + "</td>");
+				out.println("<td>" + t.getHorario() + "</td>");
+				out.println("<td>" + t.getSala() + "</td>");
+				out.println("<td>" + t.getQtde_maxima() + "</td>");
+				out.println("<td>" + t.getStatus() + "</td>");
+				out.println("<td>");
+				out.println("<a href=\"DeletarTurma?codturma=" + t.getCodigo()
+						+ "\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\" alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>");
+				out.println("</td>");
+				out.println("<td>");
+				out.println(
+						"<img src=\"Resources\\Edit_01.png\" alt=\"Edit.ico\" class=\"w3-opacity-max\" style=\"width: 18px; height: 18px; border: 0;\">");
+				out.println("</td>");
+				out.println("</tr>");
+			}
 
-						// Turmas INATIVAS
-						out.println("<tr style=\"background-color: #ce0e0e\">"); 
-								out.println("<td>"+t.getCodigo()+"</td>" );
-								out.println("<td>"+t.getNivel()+"</td>" );
-								out.println("<td>"+t.getProfessor()+"</td>" );
-								out.println("<td>"+t.getHorario()+"</td>" );
-								out.println("<td>"+t.getSala()+"</td>" );
-								out.println("<td>"+t.getQtde_maxima()+"</td>" );
-								out.println("<td>"+t.getStatus()+"</td>" );
-		                        out.println("<td>");
-								out.println("<a href=\"DeletarTurma?codturma="+t.getCodigo()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\" alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\"></a>");
-		                        out.println("</td>");
-		                        out.println("<td>");
-								out.println("<img src=\"Resources\\Edit_01.png\" alt=\"Edit.ico\" class=\"w3-opacity-max\" style=\"width: 18px; height: 18px; border: 0;\">");
-		                        out.println("</td>");
-		                        out.println("</tr>");
-					}
+		}
+		// Fim da Tabela
 
-				}
-				// Fim da Tabela
+		// Fim do Html
+		out.println("</table>");
 
-				// Fim do Html
-				out.println("</table>");
-				
-				out.print("<a href=\"Index.html\">Voltar ao Início</a>");
-				out.println("</body>");
-				out.println("</html>");
-		
-		
+		out.print("<a href=\"Index.html\">Voltar ao Início</a>");
+		out.println("</body>");
+		out.println("</html>");
 
 	}
 

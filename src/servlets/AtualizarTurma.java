@@ -14,28 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Turma;
 import persistence.TurmaDao;
 
-
 @WebServlet("/AtualizarTurma")
 public class AtualizarTurma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
- 
-    public AtualizarTurma() {
-        super();
-  
-    }
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public AtualizarTurma() {
+		super();
 
+	}
 
-		
-		/*String codturma = request.getParameter("codturma");
-		TurmaDao dao = new TurmaDao();
-		Turma t = dao.buscar(codturma);
-		List<Turma> turmas = dao.mostrar(); */
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		String cod = request.getParameter("codigo");
 		String lvl = request.getParameter("nivel");
@@ -52,31 +41,20 @@ public class AtualizarTurma extends HttpServlet {
 		System.out.println(sala);
 		System.out.println(qtde);
 		System.out.println(sts);
-		
-		
-		
-		
+
 		TurmaDao tdao = new TurmaDao();
-		
-		//System.out.println(tdao.ReachCodigo(lvl, prof, hr, sala, qtde, sts));
-		
-		Turma t = new Turma(cod,lvl,prof,hr,sala,qtde,sts);
-		
-		
-		//e aqui? pera 
+
+		Turma t = new Turma(cod, lvl, prof, hr, sala, qtde, sts);
+
 		tdao.alterar(t);
-		
-		
-		
-		
+
 		RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");
 		rd.forward(request, response);
-		
 
-		
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		doGet(request, response);
 	}

@@ -12,7 +12,7 @@ public class Turma {
 
 	public Turma() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Turma(String codigo, String nivel, String professor, String horario, String sala, int qtde_maxima,

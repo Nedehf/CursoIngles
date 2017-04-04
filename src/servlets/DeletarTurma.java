@@ -13,34 +13,32 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Turma;
 import persistence.TurmaDao;
 
+@SuppressWarnings("unused")
 @WebServlet("/DeletarTurma")
 public class DeletarTurma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		try{
-		String codturma = request.getParameter("codturma");
-		TurmaDao dao = new TurmaDao();
-		Turma t = dao.buscar(codturma);
+		try {
+			String codturma = request.getParameter("codturma");
+			TurmaDao dao = new TurmaDao();
+			Turma t = dao.buscar(codturma);
 
-		
-		dao.remover(codturma, t);
-		
-		
-		RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");
-		rd.forward(request, response);
+			dao.remover(codturma, t);
+
+			RequestDispatcher rd = request.getRequestDispatcher("ListarTurmas");
+			rd.forward(request, response);
 		} catch (RuntimeException e) {
 			response.sendRedirect("Erro.html");
-			
-			
+
 		}
-	
-		
+
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
 		doGet(request, response);
 	}

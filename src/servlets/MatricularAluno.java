@@ -1,7 +1,6 @@
 package servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -32,42 +31,24 @@ public class MatricularAluno extends HttpServlet {
 		String cod = request.getParameter("Turma");
 		Date date = new Date();
 
-//		AlunoDao adao = new AlunoDao();
-//		Aluno al = adao.buscarAluno(cpf);
-//		
-//		TurmaDao tdao = new TurmaDao();
-//		Turma t = tdao.buscar(cod);
-
 		MatriculaDao mdao = new MatriculaDao();
-		Matricula m = new Matricula(cpf,cod,date,0,1);
-		
+		Matricula m = new Matricula(cpf, cod, date, 0, 1);
+
 		TurmaDao tdao = new TurmaDao();
 		Turma t = new Turma();
 		t = tdao.buscar(cod);
-		
-		
-		
-		if(tdao.AlunosPorTurma(cod) < t.getQtde_maxima()){
-		mdao.inserir(m);
-		
-		RequestDispatcher rd = request.getRequestDispatcher("PreparaMatricula");
-		rd.forward(request, response);
-		}else{
-			
-		
-			//insira aqui a mensagem de erro :D
-			System.out.println("Erro! Não é possível adicionar mais alunos que o limite.");
-			System.err.print("Erro! Não é possível adicionar mais alunos que o limite.");
-			response.sendRedirect("Erro.html");
-			
-			
-		}
-		
-		
-		
-//		PrintWriter out = response.getWriter();
-		
 
+		if (tdao.AlunosPorTurma(cod) < t.getQtde_maxima()) {
+			mdao.inserir(m);
+
+			RequestDispatcher rd = request.getRequestDispatcher("PreparaMatricula");
+			rd.forward(request, response);
+		} else {
+
+			// mensagem de erro
+			response.sendRedirect("Erro.html");
+
+		}
 
 	}
 

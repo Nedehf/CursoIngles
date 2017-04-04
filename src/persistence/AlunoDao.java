@@ -10,7 +10,7 @@ import java.util.List;
 import beans.Aluno;
 
 public class AlunoDao {
-	
+
 	public List<Aluno> AlunosPorTurma(String codigo) {
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
@@ -19,13 +19,11 @@ public class AlunoDao {
 
 			conexao = Conexao.getConnection();
 			pstmt = conexao.prepareStatement(sql);
-			
+
 			pstmt.setString(1, codigo);
-			
-			
-			
+
 			List<Aluno> alunos = new ArrayList<Aluno>();
-//			Aluno aluno = null;
+
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -33,11 +31,7 @@ public class AlunoDao {
 				String nome = rs.getString("nome");
 				String email = rs.getString("email");
 
-				Aluno aluno = new Aluno(cpf,nome,email);
-
-//				aluno.setCpf(cpf);
-//				aluno.setNome(nome);
-//				aluno.setEmail(email);
+				Aluno aluno = new Aluno(cpf, nome, email);
 
 				alunos.add(aluno);
 			}
@@ -66,14 +60,13 @@ public class AlunoDao {
 			pstmt.setString(3, aluno.getEmail());
 
 			pstmt.executeUpdate();
-			// pstmt.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// throw new RuntimeException(e);
+
 		} finally {
 			try {
-				// if (conexao != null)
+
 				pstmt.close();
 				conexao.close();
 			} catch (SQLException e) {
@@ -84,7 +77,6 @@ public class AlunoDao {
 	}
 
 	public void remover(String cpf, Aluno aluno) {
-		// esse método é irrelevante pro trabalho?
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
@@ -128,7 +120,7 @@ public class AlunoDao {
 
 		} finally {
 			try {
-				// if (conexao != null)
+
 				pstmt.close();
 				conexao.close();
 			} catch (SQLException e) {
@@ -147,9 +139,9 @@ public class AlunoDao {
 
 			conexao = Conexao.getConnection();
 			pstmt = conexao.prepareStatement(sql);
-			
+
 			List<Aluno> alunos = new ArrayList<Aluno>();
-//			Aluno aluno = null;
+
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -157,11 +149,7 @@ public class AlunoDao {
 				String nome = rs.getString("nome");
 				String email = rs.getString("email");
 
-				Aluno aluno = new Aluno(cpf,nome,email);
-
-//				aluno.setCpf(cpf);
-//				aluno.setNome(nome);
-//				aluno.setEmail(email);
+				Aluno aluno = new Aluno(cpf, nome, email);
 
 				alunos.add(aluno);
 			}

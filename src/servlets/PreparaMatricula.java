@@ -27,19 +27,11 @@ public class PreparaMatricula extends HttpServlet {
 		TurmaDao tdao = new TurmaDao();
 		List<Turma> turmas = tdao.mostrar();
 
-		// for (Turma t : turmas) {
-		// System.out.println(t.getCodigo()+""+t.getHorario());
-		// }
-
 		AlunoDao adao = new AlunoDao();
 		List<Aluno> alunos = adao.mostrar();
 
 		MatriculaDao mdao = new MatriculaDao();
 		List<Matricula> matriculas = mdao.mostrar();
-
-		// for (Aluno al : alunos) {
-		// System.out.println(al.getCpf()+""+al.getNome());
-		// }
 
 		PrintWriter out = response.getWriter();
 

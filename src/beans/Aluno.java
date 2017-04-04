@@ -5,12 +5,10 @@ public class Aluno {
 	private String cpf;
 	private String nome;
 	private String email;
-	
-	
 
 	public Aluno() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Aluno(String cpf, String nome, String email) {

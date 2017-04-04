@@ -6,12 +6,58 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import beans.Aluno;
 import beans.Matricula;
 import beans.Turma;
 
 public class MatriculaDao {
+	
+	public Matricula buscarMatricula(String aluno_cpf, String turma_codigo) {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select * from matricula where aluno_cpf = ? and turma_codigo = ?";
+		Matricula matricula = null;
+		try {
+			
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+
+			pstmt.setString(1, aluno_cpf);
+			pstmt.setString(2, turma_codigo);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String cpfaluno = rs.getString("aluno_cpf");
+				String turmacodigo = rs.getString("turma_codigo");
+				Timestamp data_matricula = rs.getTimestamp("data_matricula");
+				double nota = rs.getDouble("nota");
+				double frequencia = rs.getDouble("frequencia");
+
+				matricula = new Matricula();
+
+				matricula.setAluno_cpf(cpfaluno);
+				matricula.setTurma_codigo(turmacodigo);
+				matricula.setData_matricula(data_matricula);
+				matricula.setNota(nota);
+				matricula.setFrequencia(frequencia);
+
+			}
+			
+			rs.close();
+			pstmt.close();
+			return matricula;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
+	
+	
+	
 
 	public void inserir(Matricula matricula) {
 
@@ -31,14 +77,12 @@ public class MatriculaDao {
 			pstmt.setDouble(5, matricula.getFrequencia());
 
 			pstmt.executeUpdate();
-			// pstmt.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			// throw new RuntimeException(e);
+
 		} finally {
 			try {
-				// if (conexao != null)
 				pstmt.close();
 				conexao.close();
 			} catch (SQLException e) {
@@ -48,8 +92,8 @@ public class MatriculaDao {
 
 	}
 
-	public void remover(){
-		
+	public void remover() {
+
 	}
 
 	public void alterar(String aluno_cpf, String turma_codigo, Matricula matricula) {
@@ -73,7 +117,7 @@ public class MatriculaDao {
 
 		} finally {
 			try {
-				// if (conexao != null)
+
 				pstmt.close();
 				conexao.close();
 			} catch (SQLException e) {
@@ -90,7 +134,7 @@ public class MatriculaDao {
 		String sql = "select * from matricula group by data_matricula desc";
 
 		try {
-			
+
 			conexao = Conexao.getConnection();
 			pstmt = conexao.prepareStatement(sql);
 
@@ -104,7 +148,7 @@ public class MatriculaDao {
 				Timestamp data_matricula = rs.getTimestamp("data_matricula");
 				double nota = rs.getDouble("nota");
 				double frequencia = rs.getDouble("frequencia");
-				
+
 				matricula = new Matricula();
 
 				matricula.setAluno_cpf(aluno_cpf);
@@ -112,7 +156,7 @@ public class MatriculaDao {
 				matricula.setData_matricula(data_matricula);
 				matricula.setNota(nota);
 				matricula.setFrequencia(frequencia);
-				
+
 				matriculas.add(matricula);
 			}
 

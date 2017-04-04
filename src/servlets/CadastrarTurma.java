@@ -35,21 +35,9 @@ public class CadastrarTurma extends HttpServlet {
 
 		tdao.inserir(turma);
 
-		// PrintWriter out = response.getWriter();
-		// out.println("<html><body>");
-		// out.println("Codigo: "+cod+"<br/>");
-		// out.println("Nivel: "+lvl+"<br/>");
-		// out.println("Professor: "+prof+"<br/>");
-		// out.println("Horario: "+hr+"<br/>");
-		// out.println("Sala: "+sala+"<br/>");
-		// out.println("Quantidade Maxima: "+qtde+"<br/>");
-		// out.println("Status: "+sts+"<br/>");
-		// out.println("</body></html>");
-		// out.close();
-
 		RequestDispatcher rd = request.getRequestDispatcher("Index.html");
 		rd.forward(request, response);
-		
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

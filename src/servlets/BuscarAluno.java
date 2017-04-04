@@ -25,18 +25,16 @@ public class BuscarAluno extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-
 		String codturma = request.getParameter("codturma");
 		TurmaDao dao = new TurmaDao();
 		Turma t = dao.buscar(codturma);
 
-
 		PrintWriter out = response.getWriter();
 
 		out.println("<html>" + "<head>" + "<meta charset=\"ISO-8859-1\">" + "<title>Buscar Aluno</title>"
-				+ "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/3/w3.css\">" + "<link rel=\"stylesheet\""
-				+ "	href=\"https://fonts.googleapis.com/css?family=Montserrat\">" + "<link rel=\"stylesheet\""
+				+ "<link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/3/w3.css\">"
+				+ "<link rel=\"stylesheet\"" + "	href=\"https://fonts.googleapis.com/css?family=Montserrat\">"
+				+ "<link rel=\"stylesheet\""
 				+ "	href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">" +
 
 				"<title>Alteração de Turma</title>" + "</head>");
@@ -70,7 +68,8 @@ public class BuscarAluno extends HttpServlet {
 		out.println("<!-- Page Content -->" + "<div class=\"w3-main w3-padding-large\" style=\"margin-left: 29%\">" +
 
 				"	<div class=\"w3-padding-64 w3-content w3-text-grey\" id=\"cadastro\""
-				+ "		style=\"margin-bottom: 64px\">" + "		<h2 class=\"w3-text-light-grey\">Alteração de Turma</h2>"
+				+ "		style=\"margin-bottom: 64px\">"
+				+ "		<h2 class=\"w3-text-light-grey\">Alteração de Turma</h2>"
 				+ "		<hr style=\"width: 200px\" class=\"w3-opacity\">" +
 
 				"		<!-- Campos -->" + "		<p>Informe a turma desejada:</p>" +
@@ -79,15 +78,12 @@ public class BuscarAluno extends HttpServlet {
 
 		out.println("<!-- ID da Turma -->" + "			<p>"
 				+ "				<input class=\"w3-input w3-padding-16 w3-border\" type=\"text\""
-				+ "					placeholder=\"Turma\" required name=\"turma\">"
-				+ "			</p>");
+				+ "					placeholder=\"Turma\" required name=\"turma\">" + "			</p>");
 
 		out.println("<!-- Submit -->" + "<p>" + "	<button class=\"w3-button w3-padding-large\" type=\"submit\">"
 				+ "		<i class=\"fa fa-paper-plane\"></i> Buscar" + "	</button>" + "</p>");
 		out.println("</form>");
-		out.println("<p>"+
-		"<a href=\"Index.html\">Voltar ao Início</a>"+
-		"</p>");
+		out.println("<p>" + "<a href=\"Index.html\">Voltar ao Início</a>" + "</p>");
 		out.println("</div>");
 
 		out.println("<!-- END PAGE -->" + "</div>");

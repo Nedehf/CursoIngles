@@ -29,7 +29,6 @@ public class PrepararBuscarA extends HttpServlet {
 		List<Aluno> als = aldao.AlunosPorTurma(codturma);
 
 		MatriculaDao mdao = new MatriculaDao();
-		List<Matricula> ms = mdao.mostrar();
 
 		PrintWriter out = response.getWriter();
 
@@ -89,7 +88,7 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("         background-position: center;");
 		out.println("         background-repeat: no-repeat;");
 		out.println("         background-size: cover;");
-		out.println("         background-image: url('Resources\\BG_01.jpg');");
+		out.println("         background-image: url('Resources\\\\BG_01.jpg');");
 		out.println("         min-height: 100%;");
 		out.println("     }");
 		out.println("     ");
@@ -115,8 +114,8 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("     /* .modal-transparent */");
 		out.println("     ");
 		out.println("     .modal-transparent .modal-content {");
-		out.println("         background: deepskyblue;");
-		out.println("         opacity: 0.5;");
+		out.println("         background: darkgrey;");
+		out.println("         opacity: 1;");
 		out.println("         filter: alpha(opacity=100);");
 		out.println("     }");
 		out.println(" </style>");
@@ -233,10 +232,9 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("                 </tr>");
 
 		for (Aluno st : als) {
-			for (Matricula mt : ms) {
-
-				if (mt.getAluno_cpf().equals(st.getCpf())) {
-
+			
+			Matricula mt = mdao.buscarMatricula(st.getCpf(),codturma);
+			
 					out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
 					out.println("                     <td>" + st.getCpf() + "</td>");
 					out.println("                     <td>" + st.getNome() + "</td>");
@@ -245,11 +243,8 @@ public class PrepararBuscarA extends HttpServlet {
 					out.println("                     <td>" + mt.getNota() + "</td>");
 					out.println("                     <td>" + mt.getFrequencia() + "</td>");
 					out.println("                 </tr>");
-				} else {
-					break;
-				}
+				
 			}
-		}
 		out.println("             </table>");
 		out.println("             <p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
 
