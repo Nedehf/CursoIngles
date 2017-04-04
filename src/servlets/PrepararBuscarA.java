@@ -11,34 +11,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Aluno;
+import beans.Matricula;
 import beans.Turma;
 import persistence.AlunoDao;
-import persistence.TurmaDao;
-
+import persistence.MatriculaDao;
 
 @WebServlet("/PrepararBuscarA")
 public class PrepararBuscarA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		String codturma = request.getParameter("codigo");
-		
+
 		AlunoDao aldao = new AlunoDao();
-		List<Aluno> als = aldao.mostrar();
-		
-		TurmaDao tdao = new TurmaDao();
-		List<Turma> turmas = tdao.mostrar();
-		
-		
-		
-		
-		
+		List<Aluno> als = aldao.AlunosPorTurma(codturma);
+
+		MatriculaDao mdao = new MatriculaDao();
+		List<Matricula> ms = mdao.mostrar();
+
 		PrintWriter out = response.getWriter();
-		
-		
+
 		out.println("<!DOCTYPE html>");
 		out.println(" <html>");
 
@@ -46,12 +40,15 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("     <title>Bootstrap Example</title>");
 		out.println("     <meta charset=\"utf-8\">");
 		out.println("     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">");
-		out.println("     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">");
+		out.println(
+				"     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\">");
 		out.println("     <link rel=\"stylesheet\" href=\"https://www.w3schools.com/w3css/3/w3.css\">");
 		out.println("     <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Montserrat\">");
-		out.println("     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">");
+		out.println(
+				"     <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">");
 		out.println("     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js\"></script>");
-		out.println("     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
+		out.println(
+				"     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
 		out.println(" </head>");
 
 		out.println(" <style>");
@@ -74,7 +71,8 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("         width: 120px;");
 		out.println("         background: #222;");
 		out.println("     }");
-		out.println("     /* Add a left margin to the \"page content\" that matches the width of the sidebar (120px) */");
+		out.println(
+				"     /* Add a left margin to the \"page content\" that matches the width of the sidebar (120px) */");
 		out.println("     ");
 		out.println("     #main {");
 		out.println("         margin-left: 120px");
@@ -132,7 +130,8 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("     <!-- Page Content -->");
 		out.println("     <div class=\"w3-main w3-padding-large\" style=\"margin-left: 29%\">");
 
-		out.println("         <div class=\"w3-padding-64 w3-content w3-text-grey\" id=\"busca aluno\" style=\"margin-bottom: 64px\">");
+		out.println(
+				"         <div class=\"w3-padding-64 w3-content w3-text-grey\" id=\"busca aluno\" style=\"margin-bottom: 64px\">");
 		out.println("             <h2 class=\"w3-text-light-grey\">Buscar Aluno</h2>");
 		out.println("             <hr style=\"width: 200px\" class=\"w3-opacity\">");
 
@@ -141,11 +140,10 @@ public class PrepararBuscarA extends HttpServlet {
 
 		out.println("             <form action=\"PrepararBuscarA\" method=\"post\">");
 
-
-
 		out.println("                 <!-- Codigo da turma -->");
 		out.println("                 <p>");
-		out.println("                     <input class=\"w3-input w3-padding-16 w3-border\" onmouseleave=\"\" type=\"text\" placeholder=\"Código da Turma\" required name=\"codigo\">");
+		out.println(
+				"                     <input class=\"w3-input w3-padding-16 w3-border\" onmouseleave=\"\" type=\"text\" placeholder=\"Código da Turma\" required name=\"codigo\">");
 		out.println("                 </p>");
 
 		out.println("                 <!-- Submit -->");
@@ -160,7 +158,8 @@ public class PrepararBuscarA extends HttpServlet {
 
 		out.println("             <!--<div class=\"container\">");
 		out.println("                  Trigger the modal with a button ");
-		out.println("                 <button type=\"button\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\">Open Modal</button>-->");
+		out.println(
+				"                 <button type=\"button\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\">Open Modal</button>-->");
 
 		out.println("             <!-- Modal -->");
 		out.println("             <div class=\"modal modal-transparent fade\" id=\"myModal\" role=\"dialog\">");
@@ -169,7 +168,8 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("                     <!-- Modal content-->");
 		out.println("                     <div class=\"modal-content\">");
 		out.println("                         <div class=\"modal-header\">");
-		out.println("                             <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
+		out.println(
+				"                             <button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button>");
 		out.println("                             <h4 class=\"modal-title\">Nome do Dado a Ser Alterado</h4>");
 		out.println("                         </div>");
 		out.println("                         <div class=\"modal-body\">");
@@ -196,7 +196,7 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" 				<!-- Codigo Turma -->");
 		out.println(" 				<p>");
 		out.println(" 					<input class=\"w3-input w3-padding-16 w3-border\" type=\"hidden\"");
-		out.println(" 						name=\"codigo\" value=\""+codturma+"\">");
+		out.println(" 						name=\"codigo\" value=\"" + codturma + "\">");
 		out.println(" 				</p>");
 		out.println(" 						<!-- Submit -->");
 		out.println(" 				<p>");
@@ -210,7 +210,8 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" 			");
 		out.println("                         </div>");
 		out.println("                         <div class=\"modal-footer\">");
-		out.println("                             <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" style=\"opacity: 1;\">Close</button>");
+		out.println(
+				"                             <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\" style=\"opacity: 1;\">Close</button>");
 		out.println("                         </div>");
 		out.println("                     </div>");
 
@@ -231,18 +232,23 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println("                     <th class=\"w3-dark-grey \">Frequência</th>");
 		out.println("                 </tr>");
 
-		for (Aluno st: als) {
-			int i =0;
-			Turma t = turmas.get(i);
-		
-		out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
-		out.println("                     <td>"+st.getCpf()+"</td>");
-		out.println("                     <td>"+st.getNome()+"</td>");
-		out.println("                     <td>"+st.getEmail()+"</td>");
-		out.println("                     <td>"++"</td>");
-		out.println("                     <td>"++"</td>");
-		out.println("                     <td>"+t.getCodigo()+"</td>");
-		out.println("                 </tr>");
+		for (Aluno st : als) {
+			for (Matricula mt : ms) {
+
+				if (mt.getAluno_cpf().equals(st.getCpf())) {
+
+					out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
+					out.println("                     <td>" + st.getCpf() + "</td>");
+					out.println("                     <td>" + st.getNome() + "</td>");
+					out.println("                     <td>" + st.getEmail() + "</td>");
+					out.println("                     <td>" + mt.getData_matricula() + "</td>");
+					out.println("                     <td>" + mt.getNota() + "</td>");
+					out.println("                     <td>" + mt.getFrequencia() + "</td>");
+					out.println("                 </tr>");
+				} else {
+					break;
+				}
+			}
 		}
 		out.println("             </table>");
 		out.println("             <p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
@@ -253,15 +259,11 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" </body>");
 
 		out.println(" </html>");
-		
-		
-		
-		
-		
+
 	}
 
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

@@ -9,24 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class FinalizarTurma
- */
+import beans.Matricula;
+import persistence.MatriculaDao;
+
+
 @WebServlet("/FinalizarTurma")
 public class FinalizarBuscarA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-   
-    public FinalizarBuscarA() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		double nota = Double.parseDouble(request.getParameter("nota"));
+		double freq = Double.parseDouble(request.getParameter("freq"));
+		String cpf = request.getParameter("cpf");
+		String codturma = request.getParameter("codigo");
 		
-		
+		Matricula matr = new Matricula(cpf, codturma, null,nota, freq);
+		MatriculaDao mdao = new MatriculaDao();
+		mdao.alterar(cpf, codturma, matr);
 	
 	
 		RequestDispatcher rd = request.getRequestDispatcher("PrepararBuscarA");
@@ -37,7 +40,6 @@ public class FinalizarBuscarA extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
