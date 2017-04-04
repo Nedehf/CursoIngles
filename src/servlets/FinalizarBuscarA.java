@@ -13,7 +13,7 @@ import beans.Matricula;
 import persistence.MatriculaDao;
 
 
-@WebServlet("/FinalizarTurma")
+@WebServlet("/FinalizarBuscarA")
 public class FinalizarBuscarA extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
