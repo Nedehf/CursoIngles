@@ -149,11 +149,11 @@ public class PreparaMatricula extends HttpServlet {
 		out.println("<br><br>");
 		// Criando cabeçalho da tabela
 		out.println("<table class=\"w3-white w3-center\" id=\"customers\">" + "	<tr>"
-				+ "		<th class=\"w3-dark-grey w3-padding-32\">CPF Aluno</th>"
-				+ "		<th class=\"w3-dark-grey w3-padding-32\">Cod Turma</th>"
-				+ "		<th class=\"w3-dark-grey w3-padding-32\">Data Mat</th>"
-				+ "		<th class=\"w3-dark-grey w3-padding-32\">Nota</th>"
-				+ "		<th class=\"w3-dark-grey w3-padding-32\">Freq</th>" + "	</tr>");
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">CPF Aluno</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Cod Turma</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Data Mat</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Nota</th>"
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Freq</th>" + "	</tr>");
 
 		// Adicionando turmas na tabela
 		for (Matricula m : matriculas) {
