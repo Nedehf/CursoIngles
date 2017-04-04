@@ -49,12 +49,16 @@ public class MatricularAluno extends HttpServlet {
 		
 		if(tdao.AlunosPorTurma(cod) < t.getQtde_maxima()){
 		mdao.inserir(m);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("PreparaMatricula");
+		rd.forward(request, response);
 		}else{
 			
 		
 			//insira aqui a mensagem de erro :D
 			System.out.println("Erro! Não é possível adicionar mais alunos que o limite.");
 			System.err.print("Erro! Não é possível adicionar mais alunos que o limite.");
+			response.sendRedirect("Erro.html");
 			
 			
 		}
@@ -63,8 +67,7 @@ public class MatricularAluno extends HttpServlet {
 		
 //		PrintWriter out = response.getWriter();
 		
-		RequestDispatcher rd = request.getRequestDispatcher("PreparaMatricula");
-		rd.forward(request, response);
+
 
 	}
 

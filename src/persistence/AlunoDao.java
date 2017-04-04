@@ -10,6 +10,46 @@ import java.util.List;
 import beans.Aluno;
 
 public class AlunoDao {
+	
+	public List<Aluno> AlunosPorTurma(String codigo) {
+		Connection conexao = null;
+		PreparedStatement pstmt = null;
+		String sql = "select a.cpf, a.nome, a.email from aluno a, turma t, matricula m where t.codigo = m.turma_codigo and m.aluno_cpf = a.cpf  and t.codigo = ?";
+		try {
+
+			conexao = Conexao.getConnection();
+			pstmt = conexao.prepareStatement(sql);
+			
+			pstmt.setString(1, codigo);
+			
+			
+			
+			List<Aluno> alunos = new ArrayList<Aluno>();
+//			Aluno aluno = null;
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				String cpf = rs.getString("cpf");
+				String nome = rs.getString("nome");
+				String email = rs.getString("email");
+
+				Aluno aluno = new Aluno(cpf,nome,email);
+
+//				aluno.setCpf(cpf);
+//				aluno.setNome(nome);
+//				aluno.setEmail(email);
+
+				alunos.add(aluno);
+			}
+
+			rs.close();
+			pstmt.close();
+			return alunos;
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 
 	public void inserir(Aluno aluno) {
 		Connection conexao = null;
