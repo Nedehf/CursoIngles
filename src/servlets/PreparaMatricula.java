@@ -26,22 +26,20 @@ public class PreparaMatricula extends HttpServlet {
 
 		TurmaDao tdao = new TurmaDao();
 		List<Turma> turmas = tdao.mostrar();
-		
-//		for (Turma t : turmas) {
-//			System.out.println(t.getCodigo()+""+t.getHorario());
-//		}
-		
+
+		// for (Turma t : turmas) {
+		// System.out.println(t.getCodigo()+""+t.getHorario());
+		// }
 
 		AlunoDao adao = new AlunoDao();
 		List<Aluno> alunos = adao.mostrar();
-		
+
 		MatriculaDao mdao = new MatriculaDao();
 		List<Matricula> matriculas = mdao.mostrar();
-		
-//		for (Aluno al : alunos) {
-//			System.out.println(al.getCpf()+""+al.getNome());
-//		}
-		
+
+		// for (Aluno al : alunos) {
+		// System.out.println(al.getCpf()+""+al.getNome());
+		// }
 
 		PrintWriter out = response.getWriter();
 
@@ -91,6 +89,12 @@ public class PreparaMatricula extends HttpServlet {
 		out.println("background-image: url('Resources\\\\BG_01.jpg\');");
 		out.println("min-height: 100%;");
 		out.println("}");
+		out.println("#customers tr:nth-child(even) {" + "background-color: #f2f2f2;}");
+		out.println("#customers tr:hover {" + "background-color: #ddd;}");
+		out.println("#customers td, #customers th {" + "border: 1px solid #ddd;" + "padding: 4px;}");
+		out.println("#customers {" + "font-family: \"Montserrat\", sans-serif;" + "border-collapse: collapse;"
+				+ "width: 100%;}");
+
 		out.println("</style>");
 
 		out.println("<body class=\"w3-black\">");
@@ -142,76 +146,27 @@ public class PreparaMatricula extends HttpServlet {
 		out.println("			</p>");
 		out.println("		</form>");
 
-
-
-
-
-
-
-		
-		out.println("<body class=\"w3-black\">" +
-
-				"<div class=\"w3-content w3-text-grey\"" + "	style=\"margin-bottom: 10px; margin-left: 10px;\">"
-				+ "	<h4 style=\"margin-bottom: -20px;\"> </h4>" + "	<hr class=\"w3-opacity\""
-				+ "		style=\"display: inline-block; width: 80px; margin-bottom: 10px;\">" + "</div>" +
-
-				// Criando cabeçalho da tabela
-				"<table class=\"w3-white w3-center\" id=\"customers\">" + "	<tr>"
+		out.println("<br><br>");
+		// Criando cabeçalho da tabela
+		out.println("<table class=\"w3-white w3-center\" id=\"customers\">" + "	<tr>"
 				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">CPF Aluno</th>"
 				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Cod Turma</th>"
 				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Data Mat</th>"
 				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Nota</th>"
-				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Freq</th>"
-				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>"
-				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\"></th>" + "	</tr>");
+				+ "		<th class=\"w3-dark-grey w3-xlarge w3-padding-32\">Freq</th>" + "	</tr>");
 
-		
-		
-		
-// Adicionando turmas na tabela
+		// Adicionando turmas na tabela
 		for (Matricula m : matriculas) {
 
 			// Turmas ATIVAS
-		
-				out.println("<tr>" + 
-						"<td>"+m.getAluno_cpf()+"</td>" + 
-						"<td>"+m.getTurma_codigo()+"</td>" + 
-						"<td>"+m.getData_matricula()+"</td>" + 
-						"<td>"+m.getNota()+"</td>" +
-						"<td>"+m.getFrequencia()+"</td>" + 
-						"<td><a href=\"DeletarTurma?codturma="+m.getAluno_cpf()+"\" onclick=\"return confirm(\"Deseja Deletar Registro?\")\"> <img src=\"Resources\\Bin_01.png\"alt=\"delete.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
-						"</a></td>"+
-						"<td><a href=\"EditarTurma?codturma="+m.getTurma_codigo()+"\"> <img src=\"Resources\\Edit_01.png\"alt=\"Edit.ico\" style=\"width: 18px; height: 18px; border: 0;\">" + 
-						"</a></td>" + "</tr>");
-			
 
-			
+			out.println("<tr>" + "<td>" + m.getAluno_cpf() + "</td>" + "<td>" + m.getTurma_codigo() + "</td>" + "<td>"
+					+ m.getData_matricula() + "</td>" + "<td>" + m.getNota() + "</td>" + "<td>" + m.getFrequencia()
+					+ "</td>" + "</tr>");
 
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		out.println("</table>");
 
 		out.println("<p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
 
