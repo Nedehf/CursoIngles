@@ -160,6 +160,34 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(
 				"                 <button type=\"button\" class=\"btn btn-info btn-lg\" data-toggle=\"modal\" data-target=\"#myModal\">Open Modal</button>-->");
 
+		out.println("             <!--Tabela-->");
+
+		out.println("             <table class=\"w3-white w3-center\" id=\"customers\">");
+		out.println("                 <tr>");
+		out.println("                     <th class=\"w3-dark-grey \">CPF</th>");
+		out.println("                     <th class=\"w3-dark-grey \">Nome</th>");
+		out.println("                     <th class=\"w3-dark-grey \">E-mail</th>");
+		out.println("                     <th class=\"w3-dark-grey \">Data Matrícula</th>");
+		out.println("                     <th class=\"w3-dark-grey \">Nota</th>");
+		out.println("                     <th class=\"w3-dark-grey \">Frequência</th>");
+		out.println("                 </tr>");
+
+		for (Aluno st : als) {
+
+			Matricula mt = mdao.buscarMatricula(st.getCpf(), codturma);
+
+			out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
+			out.println("                     <td>" + st.getCpf() + "</td>");
+			out.println("                     <td>" + st.getNome() + "</td>");
+			out.println("                     <td>" + st.getEmail() + "</td>");
+			out.println("                     <td>" + mt.getData_matricula() + "</td>");
+			out.println("                     <td>" + mt.getNota() + "</td>");
+			out.println("                     <td>" + mt.getFrequencia() + "</td>");
+			out.println("                 </tr>");
+
+		}
+		out.println("             </table>");
+
 		out.println("             <!-- Modal -->");
 		out.println("             <div class=\"modal modal-transparent fade\" id=\"myModal\" role=\"dialog\">");
 		out.println("                 <div class=\"modal-dialog\">");
@@ -190,7 +218,7 @@ public class PrepararBuscarA extends HttpServlet {
 		out.println(" 				<!-- CPF -->");
 		out.println(" 				<p>");
 		out.println(" 					<input class=\"w3-input w3-padding-16 w3-border\" type=\"text\"");
-		out.println(" 						placeholder=\"CPF\" required name=\"cpf\">");
+		out.println(" 					 placeholder=\"CPF\" required name=\"cpf\">");
 		out.println(" 				</p>");
 		out.println(" 				<!-- Codigo Turma -->");
 		out.println(" 				<p>");
@@ -219,33 +247,6 @@ public class PrepararBuscarA extends HttpServlet {
 
 		out.println("             <!--</div>-->");
 
-		out.println("             <!--Tabela-->");
-
-		out.println("             <table class=\"w3-white w3-center\" id=\"customers\">");
-		out.println("                 <tr>");
-		out.println("                     <th class=\"w3-dark-grey \">CPF</th>");
-		out.println("                     <th class=\"w3-dark-grey \">Nome</th>");
-		out.println("                     <th class=\"w3-dark-grey \">E-mail</th>");
-		out.println("                     <th class=\"w3-dark-grey \">Data Matrícula</th>");
-		out.println("                     <th class=\"w3-dark-grey \">Nota</th>");
-		out.println("                     <th class=\"w3-dark-grey \">Frequência</th>");
-		out.println("                 </tr>");
-
-		for (Aluno st : als) {
-			
-			Matricula mt = mdao.buscarMatricula(st.getCpf(),codturma);
-			
-					out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
-					out.println("                     <td>" + st.getCpf() + "</td>");
-					out.println("                     <td>" + st.getNome() + "</td>");
-					out.println("                     <td>" + st.getEmail() + "</td>");
-					out.println("                     <td>" + mt.getData_matricula() + "</td>");
-					out.println("                     <td>" + mt.getNota() + "</td>");
-					out.println("                     <td>" + mt.getFrequencia() + "</td>");
-					out.println("                 </tr>");
-				
-			}
-		out.println("             </table>");
 		out.println("             <p> <a href=\"Index.html\">Voltar ao Início</a> </p>");
 
 		out.println("         </div>");

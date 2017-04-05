@@ -46,7 +46,7 @@ public class MatricularAluno extends HttpServlet {
 		} else {
 
 			// mensagem de erro
-			response.sendRedirect("Erro.html");
+			response.sendRedirect("Erro2.html");
 
 		}
 

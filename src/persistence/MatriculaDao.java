@@ -100,15 +100,25 @@ public class MatriculaDao {
 
 		Connection conexao = null;
 		PreparedStatement pstmt = null;
-		String sql = "update matricula set nota = ?, frequencia = ? where codigo = ?";
+		String sql = "update matricula set nota = ?, frequencia = ? where aluno_cpf = ? and turma_codigo = ?";
 
 		try {
 
 			conexao = Conexao.getConnection();
 			pstmt = conexao.prepareStatement(sql);
 
-			pstmt.setDouble(1, matricula.getFrequencia());
-			pstmt.setDouble(2, matricula.getNota());
+			
+			
+			pstmt.setDouble(1, matricula.getNota());
+			pstmt.setDouble(2, matricula.getFrequencia());
+			
+			
+			
+			pstmt.setString(3, aluno_cpf);
+			pstmt.setString(4, turma_codigo);
+			
+			
+			
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
