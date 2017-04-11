@@ -50,6 +50,11 @@ public class PrepararBuscarA extends HttpServlet {
 				"     <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\"></script>");
 		out.println(" </head>");
 
+		<script>
+		function setCpf(cpf) {
+			document.forms[0].cpf.value = cpf;
+		}
+		</script>
 		out.println(" <style>");
 		out.println("     body,");
 		out.println("     h1,");
@@ -176,7 +181,7 @@ public class PrepararBuscarA extends HttpServlet {
 
 			Matricula mt = mdao.buscarMatricula(st.getCpf(), codturma);
 
-			out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\">");
+			out.println("                 <tr data-toggle=\"modal\" data-target=\"#myModal\" onclick='setCpf("+st.getCpf()+")'>");
 			out.println("                     <td>" + st.getCpf() + "</td>");
 			out.println("                     <td>" + st.getNome() + "</td>");
 			out.println("                     <td>" + st.getEmail() + "</td>");
